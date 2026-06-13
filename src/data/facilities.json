@@ -1,0 +1,123 @@
+[
+  {
+    "id": "power_relay",
+    "name": "Power Relay",
+    "description": "Generates additional power for the Avenger.",
+    "source": "base",
+    "powerCost": -6,
+    "buildDays": 7,
+    "buildCost": "75 Supplies",
+    "effects": ["+6 Power (or +8 with Elerium Generator upgrade)"]
+  },
+  {
+    "id": "resistance_comms",
+    "name": "Resistance Comms",
+    "description": "Expands XCOM's communication range to contact more Resistance cells.",
+    "source": "base",
+    "powerCost": 3,
+    "buildDays": 7,
+    "buildCost": "100 Supplies",
+    "effects": ["+2 Resistance contacts per Comms built", "Required for spreading to new regions"]
+  },
+  {
+    "id": "guerrilla_tactics",
+    "name": "Guerrilla Tactics School (GTS)",
+    "description": "Trains soldiers and allows squad size upgrades.",
+    "source": "base",
+    "powerCost": 3,
+    "buildDays": 7,
+    "buildCost": "100 Supplies",
+    "effects": ["Squad Size upgrades (unlock 5-man, 6-man squads)", "Soldier training bonuses", "Covert Action unlocks (WotC)"]
+  },
+  {
+    "id": "workshop",
+    "name": "Workshop",
+    "description": "Staffed by Gremlins that provide extra Engineer staff for adjacent facilities.",
+    "source": "base",
+    "powerCost": 3,
+    "buildDays": 5,
+    "buildCost": "75 Supplies",
+    "effects": ["Gremlins staff adjacent facility slots", "1 Gremlin per Workshop (up to 2 staffed at once)"]
+  },
+  {
+    "id": "laboratory",
+    "name": "Laboratory",
+    "description": "Extra Scientists speed up research.",
+    "source": "base",
+    "powerCost": 3,
+    "buildDays": 5,
+    "buildCost": "75 Supplies",
+    "effects": ["+2 Scientists", "Reduces research time when Scientists are assigned"]
+  },
+  {
+    "id": "advanced_warfare",
+    "name": "Advanced Warfare Center (AWC)",
+    "description": "Allows wounded soldiers to recover faster and learn bonus abilities.",
+    "source": "base",
+    "powerCost": 3,
+    "buildDays": 7,
+    "buildCost": "100 Supplies",
+    "effects": ["Wounded soldiers recover faster when assigned", "Soldiers can train an extra ability (WotC: Training Center replaces this)"]
+  },
+  {
+    "id": "psi_lab",
+    "name": "Psi Lab",
+    "description": "Train Psi Operatives and research psionic abilities.",
+    "source": "base",
+    "powerCost": 5,
+    "buildDays": 10,
+    "buildCost": "150 Supplies + Elerium Core",
+    "effects": ["Unlocks Psi Operative class", "Trains Psi abilities (random from pool)", "Each training takes days based on difficulty"]
+  },
+  {
+    "id": "proving_grounds",
+    "name": "Proving Grounds",
+    "description": "Build experimental items and break down alien materials.",
+    "source": "base",
+    "powerCost": 3,
+    "buildDays": 7,
+    "buildCost": "75 Supplies",
+    "effects": ["Experimental items: grenades, ammo, armor upgrades", "Skulljack & Skullmining research here", "Ruler items (Alien Hunters DLC)"]
+  },
+  {
+    "id": "shadow_chamber",
+    "name": "Shadow Chamber",
+    "description": "Analyze alien artifacts to decode story missions and reduce Avatar Project.",
+    "source": "base",
+    "powerCost": 5,
+    "buildDays": 14,
+    "buildCost": "200 Supplies + Elerium Core",
+    "effects": ["Required for story mission research (Blacksite Vial, Codex Brain, etc.)", "Unlocks each story-chain mission", "Reduces research time for story items"]
+  },
+  {
+    "id": "engineering",
+    "name": "Engineering Bay",
+    "description": "Build equipment and weapons faster.",
+    "source": "base",
+    "powerCost": 3,
+    "buildDays": 5,
+    "buildCost": "75 Supplies",
+    "effects": ["+2 Engineers", "Reduces build time for manufactured items"]
+  },
+  {
+    "id": "training_center",
+    "name": "Training Center",
+    "description": "WotC: Replaces the AWC. Soldiers can train AP-costing abilities from other classes.",
+    "source": "wotc",
+    "powerCost": 3,
+    "buildDays": 7,
+    "buildCost": "100 Supplies",
+    "effects": ["Soldiers spend AP to learn abilities from the training pool", "Faster wound recovery", "Replaces AWC functionality"],
+    "replacedByWotc": true
+  },
+  {
+    "id": "infirmary",
+    "name": "Infirmary",
+    "description": "WotC: New facility for managing Will recovery and removing negative traits.",
+    "source": "wotc",
+    "powerCost": 3,
+    "buildDays": 7,
+    "buildCost": "100 Supplies",
+    "effects": ["Removes negative traits gained from trauma", "Manages Will recovery for Shaken soldiers", "Allows treatment of mental health effects"]
+  }
+]

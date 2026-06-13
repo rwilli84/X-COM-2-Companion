@@ -1,0 +1,191 @@
+[
+  {
+    "id": "alien_biotech",
+    "name": "Alien Biotech",
+    "description": "Dissect alien biological material to begin understanding ADVENT's genetic technology.",
+    "source": "base",
+    "prerequisites": [],
+    "days": { "rookie": 5, "veteran": 5, "commander": 5, "legend": 5 },
+    "unlocks": ["Sectoid Autopsy", "Viper Autopsy", "Facility: Guerrilla Tactics School (via Sectoid)", "Psi Lab (prerequisite chain)"]
+  },
+  {
+    "id": "sectoid_autopsy",
+    "name": "Sectoid Autopsy",
+    "description": "Examine a Sectoid corpse to learn about psionic amplification.",
+    "source": "base",
+    "prerequisites": ["alien_biotech"],
+    "days": { "rookie": 5, "veteran": 5, "commander": 5, "legend": 5 },
+    "unlocks": ["Psionic Helmet (equipment)", "Research lead toward Psi Gate"]
+  },
+  {
+    "id": "viper_autopsy",
+    "name": "Viper Autopsy",
+    "description": "Study the Viper's biology to develop Venom Rounds and ADVENT vaccine.",
+    "source": "base",
+    "prerequisites": ["alien_biotech"],
+    "days": { "rookie": 5, "veteran": 5, "commander": 5, "legend": 5 },
+    "unlocks": ["Venom Rounds (weapon upgrade)", "Mimic Beacon (utility item)"]
+  },
+  {
+    "id": "advent_trooper_autopsy",
+    "name": "ADVENT Trooper Autopsy",
+    "description": "Dissect an ADVENT soldier to understand their genetic modifications.",
+    "source": "base",
+    "prerequisites": ["alien_biotech"],
+    "days": { "rookie": 3, "veteran": 3, "commander": 3, "legend": 3 },
+    "unlocks": ["Medikit (improved)", "Neural Chip research lead"]
+  },
+  {
+    "id": "modular_weapons",
+    "name": "Modular Weapons",
+    "description": "Engineer more effective weapon attachments compatible with XCOM's conventional arsenal.",
+    "source": "base",
+    "prerequisites": [],
+    "days": { "rookie": 5, "veteran": 5, "commander": 5, "legend": 5 },
+    "unlocks": ["Weapon Upgrade slots available", "Scope, Stock, Laser Sight upgrades"]
+  },
+  {
+    "id": "magnetic_weapons",
+    "name": "Magnetic Weapons",
+    "description": "Develop the next generation of magnetic projectile weapons. The core of the 'Mag Rush' strategy.",
+    "source": "base",
+    "prerequisites": ["modular_weapons"],
+    "days": { "rookie": 10, "veteran": 12, "commander": 14, "legend": 16 },
+    "unlocks": ["Magnetic Rifle (Ranger)", "Magnetic Cannon (Grenadier)", "Magnetic Sniper (Sharpshooter)", "Magnetic Shotgun (Ranger)", "Arashi (Specialist SMG)", "WAR Suit (prerequisite)"]
+  },
+  {
+    "id": "plated_armor",
+    "name": "Plated Armor",
+    "description": "Reverse-engineer alien materials to produce stronger body armor.",
+    "source": "base",
+    "prerequisites": ["alien_biotech"],
+    "days": { "rookie": 8, "veteran": 10, "commander": 12, "legend": 14 },
+    "unlocks": ["Predator Armor (basic plated)", "Spider Suit (WotC-modified)", "EXO Suit"]
+  },
+  {
+    "id": "muton_autopsy",
+    "name": "Muton Autopsy",
+    "description": "Study Muton physiology to develop better armor and grenade technology.",
+    "source": "base",
+    "prerequisites": ["alien_biotech"],
+    "days": { "rookie": 7, "veteran": 8, "commander": 9, "legend": 10 },
+    "unlocks": ["Alien Grenade (improved grenade)", "Plated Armor research lead"]
+  },
+  {
+    "id": "plasma_rifle",
+    "name": "Plasma Rifle",
+    "description": "Develop plasma weapons — the pinnacle of alien weapon technology.",
+    "source": "base",
+    "prerequisites": ["magnetic_weapons", "elerium"],
+    "days": { "rookie": 14, "veteran": 16, "commander": 18, "legend": 21 },
+    "unlocks": ["Plasma Rifle", "Plasma Cannon", "Plasma Lance", "Plasma Pistol", "Storm Gun"]
+  },
+  {
+    "id": "elerium",
+    "name": "Elerium",
+    "description": "Understand the exotic element that powers alien technology.",
+    "source": "base",
+    "prerequisites": ["magnetic_weapons"],
+    "days": { "rookie": 10, "veteran": 12, "commander": 14, "legend": 16 },
+    "unlocks": ["Elerium Core fabrication", "Powered Armor research lead", "Plasma weapons unlocked"]
+  },
+  {
+    "id": "powered_armor",
+    "name": "Powered Armor",
+    "description": "Create full exoskeletal combat suits using Elerium power cores.",
+    "source": "base",
+    "prerequisites": ["elerium", "plated_armor"],
+    "days": { "rookie": 12, "veteran": 14, "commander": 16, "legend": 18 },
+    "unlocks": ["Warden Armor (powered)", "WAR Suit", "Wraith Suit", "SPARK chassis upgrade"]
+  },
+  {
+    "id": "psi_gate",
+    "name": "Psi Gate",
+    "description": "Investigate the alien network that powers psionic activity.",
+    "source": "base",
+    "prerequisites": ["sectoid_autopsy"],
+    "days": { "rookie": 10, "veteran": 12, "commander": 14, "legend": 16 },
+    "unlocks": ["Psi Lab (facility)", "Research into Psi Operative class"]
+  },
+  {
+    "id": "psionics",
+    "name": "Psionics",
+    "description": "Harness psionic energy to train XCOM's own psychic warriors.",
+    "source": "base",
+    "prerequisites": ["psi_gate"],
+    "days": { "rookie": 10, "veteran": 12, "commander": 14, "legend": 16 },
+    "unlocks": ["Psi Operative class unlocked", "Psi Amp weapon"]
+  },
+  {
+    "id": "gatekeeper_autopsy",
+    "name": "Gatekeeper Autopsy",
+    "description": "Examine the Gatekeeper to understand Elder control over psionic beings.",
+    "source": "base",
+    "prerequisites": ["psionics"],
+    "days": { "rookie": 10, "veteran": 11, "commander": 12, "legend": 14 },
+    "unlocks": ["Bluescreen Rounds", "Research insight into Avatar Project"]
+  },
+  {
+    "id": "avatar_autopsy",
+    "name": "Avatar Autopsy",
+    "description": "Examine the Elders' constructed Avatar form.",
+    "source": "base",
+    "prerequisites": ["gatekeeper_autopsy"],
+    "days": { "rookie": 14, "veteran": 16, "commander": 18, "legend": 21 },
+    "unlocks": ["Final mission access research chain", "Advanced psi items"]
+  },
+  {
+    "id": "blacksite_data",
+    "name": "Blacksite Vial Research",
+    "description": "Analyze the vial recovered from the Blacksite mission.",
+    "source": "base",
+    "prerequisites": [],
+    "days": { "rookie": 14, "veteran": 16, "commander": 18, "legend": 21 },
+    "unlocks": ["Reduce Avatar Project progress", "Key story progression"]
+  },
+  {
+    "id": "codex_brain",
+    "name": "Codex Brain",
+    "description": "Analyze the Codex brain obtained from story missions.",
+    "source": "base",
+    "prerequisites": ["blacksite_data"],
+    "days": { "rookie": 14, "veteran": 16, "commander": 18, "legend": 21 },
+    "unlocks": ["Psi Gate mission access", "Cipher device"]
+  },
+  {
+    "id": "alien_encryption",
+    "name": "Alien Encryption",
+    "description": "Decode alien communications to understand the Avatar Project's timeline.",
+    "source": "base",
+    "prerequisites": ["codex_brain"],
+    "days": { "rookie": 14, "veteran": 16, "commander": 18, "legend": 21 },
+    "unlocks": ["Forge mission access", "Stasis Suit", "Final story chain"]
+  },
+  {
+    "id": "ruler_autopsy_viper",
+    "name": "Viper King Autopsy",
+    "description": "Analyze the Viper King to create powerful Ruler armor.",
+    "source": "alien_hunters",
+    "prerequisites": ["viper_autopsy"],
+    "days": { "rookie": 10, "veteran": 11, "commander": 12, "legend": 14 },
+    "unlocks": ["Icarus Armor (Viper King scale)"]
+  },
+  {
+    "id": "ruler_autopsy_berserker",
+    "name": "Berserker Queen Autopsy",
+    "description": "Study the Berserker Queen to develop the heaviest XCOM armor.",
+    "source": "alien_hunters",
+    "prerequisites": ["muton_autopsy"],
+    "days": { "rookie": 10, "veteran": 11, "commander": 12, "legend": 14 },
+    "unlocks": ["Rage Suit (Berserker Queen armor)"]
+  },
+  {
+    "id": "ruler_autopsy_archon",
+    "name": "Archon King Autopsy",
+    "description": "Examine the Archon King to create winged jet propulsion armor.",
+    "source": "alien_hunters",
+    "prerequisites": ["alien_biotech"],
+    "days": { "rookie": 10, "veteran": 11, "commander": 12, "legend": 14 },
+    "unlocks": ["Serpent Suit"]
+  }
+]

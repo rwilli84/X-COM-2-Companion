@@ -1,0 +1,468 @@
+[
+  {
+    "id": "ranger",
+    "name": "Ranger",
+    "description": "Close-quarters specialist with a sword and shotgun. Excels at flanking and executing weakened enemies.",
+    "source": "base",
+    "squaddieFreeAbility": {
+      "id": "ranger_slash",
+      "name": "Slash",
+      "description": "Attack an adjacent enemy with your sword. Does not consume all actions. Deals 4-6 damage.",
+      "source": "base"
+    },
+    "ranks": [
+      {
+        "rank": "corporal",
+        "choices": [
+          { "id": "ranger_run_and_gun", "name": "Run and Gun", "description": "Allows the soldier to take an action after dashing.", "source": "base" },
+          { "id": "ranger_phantom", "name": "Phantom", "description": "When the squad is revealed, this soldier remains concealed.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "sergeant",
+        "choices": [
+          { "id": "ranger_shadowstep", "name": "Shadowstep", "description": "This soldier does not trigger overwatch or reaction fire.", "source": "base" },
+          { "id": "ranger_implacable", "name": "Implacable", "description": "After a kill, gain +1 bonus action (once per turn).", "source": "base" }
+        ]
+      },
+      {
+        "rank": "lieutenant",
+        "choices": [
+          { "id": "ranger_bladestorm", "name": "Bladestorm", "description": "Any enemy that moves adjacent to you is attacked automatically with your sword.", "source": "base" },
+          { "id": "ranger_lightning_hands", "name": "Lightning Hands", "description": "Fire your pistol as a free action (once per turn), does not end your turn.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "captain",
+        "choices": [
+          { "id": "ranger_untouchable", "name": "Untouchable", "description": "After a kill, gain 1 free dodge attempt against the next attack (until next turn).", "source": "base" },
+          { "id": "ranger_aggression", "name": "Aggression", "description": "Gain +10 crit chance for each enemy in your sight range (stacks up to 3).", "source": "base" }
+        ]
+      },
+      {
+        "rank": "major",
+        "choices": [
+          { "id": "ranger_reaper", "name": "Reaper", "description": "Kills with a sword do not end your turn and remove the Reaper suppression effect.", "source": "base" },
+          { "id": "ranger_rapid_fire", "name": "Rapid Fire", "description": "Take two shots with a penalty to aim (-15). Both shots cost only 1 action.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "colonel",
+        "choices": [
+          { "id": "ranger_face_off", "name": "Face Off", "description": "Fire once at every enemy in line of sight with your equipped primary weapon.", "source": "base" },
+          { "id": "ranger_whirlwind", "name": "Whirlwind", "description": "Bladestorm can trigger multiple times per turn, once per enemy.", "source": "base" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sharpshooter",
+    "name": "Sharpshooter",
+    "description": "Long-range precision specialist. Can attack from extreme range and use pistol for close encounters.",
+    "source": "base",
+    "squaddieFreeAbility": {
+      "id": "sharp_squadsight",
+      "name": "Squadsight",
+      "description": "Can target any enemy visible to any squad member, with a long-range aim penalty.",
+      "source": "base"
+    },
+    "ranks": [
+      {
+        "rank": "corporal",
+        "choices": [
+          { "id": "sharp_long_watch", "name": "Long Watch", "description": "Activate overwatch as a single action. Overwatch shots can trigger at squadsight range.", "source": "base" },
+          { "id": "sharp_death_from_above", "name": "Death From Above", "description": "Shooting down at enemies grants +10 aim and +10 crit.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "sergeant",
+        "choices": [
+          { "id": "sharp_return_fire", "name": "Return Fire", "description": "Once per turn, automatically fires pistol at anyone who shoots this soldier.", "source": "base" },
+          { "id": "sharp_sniper_creed", "name": "Sniper's Creed", "description": "+10 aim and +10 crit for each unspent action point at the start of a shot.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "lieutenant",
+        "choices": [
+          { "id": "sharp_aim", "name": "Aim", "description": "Spend an action to take careful aim, granting stacking +20 aim bonuses on your next shot.", "source": "base" },
+          { "id": "sharp_quickdraw", "name": "Quickdraw", "description": "Pistol shots no longer end your turn.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "captain",
+        "choices": [
+          { "id": "sharp_steady_hands", "name": "Steady Hands", "description": "+10 aim and +10 crit if the soldier did not move last turn.", "source": "base" },
+          { "id": "sharp_fan_fire", "name": "Fan Fire", "description": "Fire three pistol shots at a single target. Costs both actions.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "major",
+        "choices": [
+          { "id": "sharp_kill_zone", "name": "Kill Zone", "description": "Take overwatch shots on all enemies who move through your aim cone this turn.", "source": "base" },
+          { "id": "sharp_lightning_hands", "name": "Lightning Hands", "description": "Fire your pistol as a free action, once per turn.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "colonel",
+        "choices": [
+          { "id": "sharp_serial", "name": "Serial", "description": "If your sniper rifle kills an enemy, you may fire again (no action cost).", "source": "base" },
+          { "id": "sharp_face_off", "name": "Face Off", "description": "Fire pistol once at every enemy in sight.", "source": "base" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "grenadier",
+    "name": "Grenadier",
+    "description": "Heavy weapons specialist. Destroys cover and armor, controls areas with grenades and cannons.",
+    "source": "base",
+    "squaddieFreeAbility": {
+      "id": "gren_heavy_ordnance",
+      "name": "Heavy Ordnance",
+      "description": "Carry one extra grenade.",
+      "source": "base"
+    },
+    "ranks": [
+      {
+        "rank": "corporal",
+        "choices": [
+          { "id": "gren_shredder", "name": "Shredder", "description": "Cannon shots reduce enemy armor by 1.", "source": "base" },
+          { "id": "gren_volatile_mix", "name": "Volatile Mix", "description": "Grenades deal +2 damage.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "sergeant",
+        "choices": [
+          { "id": "gren_holo_targeting", "name": "Holo Targeting", "description": "Cannon shots grant +15 aim to all squadmates targeting that enemy this turn.", "source": "base" },
+          { "id": "gren_salvo", "name": "Salvo", "description": "Using a grenade or launcher ability does not consume an action if you have full actions.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "lieutenant",
+        "choices": [
+          { "id": "gren_suppression", "name": "Suppression", "description": "Pin down an enemy: -30 aim, grants reaction shot if target moves.", "source": "base" },
+          { "id": "gren_rupture", "name": "Rupture", "description": "Cannon shots inflict Rupture (enemy takes +3 damage from all sources until their turn).", "source": "base" }
+        ]
+      },
+      {
+        "rank": "captain",
+        "choices": [
+          { "id": "gren_chain_shot", "name": "Chain Shot", "description": "Fire at an enemy; if it misses, fire again immediately.", "source": "base" },
+          { "id": "gren_demolition", "name": "Demolition", "description": "Fire a volley that destroys cover with no damage but reveals concealed enemies.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "major",
+        "choices": [
+          { "id": "gren_saturation_fire", "name": "Saturation Fire", "description": "Fire at all enemies in a cone in front of you.", "source": "base" },
+          { "id": "gren_area_suppression", "name": "Area Suppression", "description": "Suppression applies to all enemies in a target area.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "colonel",
+        "choices": [
+          { "id": "gren_full_auto", "name": "Full Auto", "description": "Fire twice at any target in range with no aim penalty.", "source": "base" },
+          { "id": "gren_armageddon", "name": "Armageddon", "description": "Fire a barrage that destroys all cover and deals massive damage in an area.", "source": "base", "approx": true }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "specialist",
+    "name": "Specialist",
+    "description": "Tech support and combat medic. Controls the battlefield with a drone (Gremlin) for hacking and healing.",
+    "source": "base",
+    "squaddieFreeAbility": {
+      "id": "spec_gremlin",
+      "name": "Gremlin",
+      "description": "Deploy your Gremlin drone to heal allies or hack targets at range.",
+      "source": "base"
+    },
+    "ranks": [
+      {
+        "rank": "corporal",
+        "choices": [
+          { "id": "spec_field_medic", "name": "Field Medic", "description": "Using a Medikit heals +4 HP extra and grants an extra charge.", "source": "base" },
+          { "id": "spec_haywire", "name": "Haywire Protocol", "description": "Attempt to take control of a robotic enemy.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "sergeant",
+        "choices": [
+          { "id": "spec_combat_protocol", "name": "Combat Protocol", "description": "Send Gremlin to deal 3-4 damage to a target (ignores armor). Scales with tech.", "source": "base" },
+          { "id": "spec_aid_protocol", "name": "Aid Protocol", "description": "Send Gremlin to grant +20 defense to an ally.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "lieutenant",
+        "choices": [
+          { "id": "spec_scanning_protocol", "name": "Scanning Protocol", "description": "Deploy Gremlin to scan an area, revealing hidden enemies.", "source": "base" },
+          { "id": "spec_revival_protocol", "name": "Revival Protocol", "description": "Revive and stabilize a bleeding-out soldier from range.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "captain",
+        "choices": [
+          { "id": "spec_threat_assessment", "name": "Threat Assessment", "description": "Aid Protocol also grants the target +1 overwatch shot.", "source": "base" },
+          { "id": "spec_ever_vigilant", "name": "Ever Vigilant", "description": "If you spend no actions moving, automatically go into overwatch.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "major",
+        "choices": [
+          { "id": "spec_capacitor_discharge", "name": "Capacitor Discharge", "description": "Gremlin releases an electric burst, damaging all robotic/mechanical enemies in range.", "source": "base" },
+          { "id": "spec_guardian", "name": "Guardian", "description": "20% chance to take a free overwatch shot when an ally is targeted.", "source": "base" }
+        ]
+      },
+      {
+        "rank": "colonel",
+        "choices": [
+          { "id": "spec_tyrant", "name": "Tyrant", "description": "Haywire Protocol also permanently disables the target on a successful hack.", "source": "base", "approx": true },
+          { "id": "spec_restoration", "name": "Restoration", "description": "Gremlin heals all nearby allies at once.", "source": "base" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "psi_operative",
+    "name": "Psi Operative",
+    "description": "Psychic warrior. Trained at the Psi Lab with unique random ability progression. Powerful but slow to develop.",
+    "source": "base",
+    "ranks": [
+      {
+        "rank": "squaddie",
+        "choices": [
+          { "id": "psi_stasis", "name": "Stasis", "description": "Encase an enemy or ally in a stasis field — immune to all damage but cannot act.", "source": "base" },
+          { "id": "psi_insanity", "name": "Insanity", "description": "Target an enemy — may Disorient, Panic, or briefly Mind Control them.", "source": "base" },
+          { "id": "psi_inspire", "name": "Inspire", "description": "Restore an ally's actions.", "source": "base" },
+          { "id": "psi_null_lance", "name": "Null Lance", "description": "Fire a piercing psionic beam through multiple enemies.", "source": "base" },
+          { "id": "psi_void_rift", "name": "Void Rift", "description": "Create a psionic disturbance that deals heavy damage and may Disorient all enemies in range.", "source": "base" },
+          { "id": "psi_solace", "name": "Solace", "description": "Nearby allies are immune to mental effects.", "source": "base", "passive": true },
+          { "id": "psi_soulfire", "name": "Soulfire", "description": "Deal psionic damage to a target. Damage ignores armor.", "source": "base" },
+          { "id": "psi_domination", "name": "Domination", "description": "Permanently mind control a non-robotic enemy.", "source": "base" },
+          { "id": "psi_fortress", "name": "Fortress", "description": "Passively resist psionic attacks and status effects.", "source": "base", "passive": true },
+          { "id": "psi_sustain", "name": "Sustain", "description": "Passively, once per mission, survive a lethal hit with 1 HP instead.", "source": "base", "passive": true }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "spark",
+    "name": "SPARK",
+    "description": "Robotic unit built from Shen's blueprints. Cannot be wounded in the traditional sense — takes repair time instead. Powerful melee and ranged capabilities.",
+    "source": "shens_last_gift",
+    "ranks": [
+      {
+        "rank": "corporal",
+        "choices": [
+          { "id": "spark_repair", "name": "Repair", "description": "SPARK can self-repair, restoring HP. Costs an action.", "source": "shens_last_gift" },
+          { "id": "spark_overdrive", "name": "Overdrive", "description": "Gain +1 action this turn, but take 2 damage.", "source": "shens_last_gift" }
+        ]
+      },
+      {
+        "rank": "sergeant",
+        "choices": [
+          { "id": "spark_battle_comp", "name": "Battle Comp", "description": "+10 aim, +10 crit when not using Overdrive.", "source": "shens_last_gift" },
+          { "id": "spark_bulwark", "name": "Bulwark", "description": "Adjacent allies gain +10 defense.", "source": "shens_last_gift", "passive": true }
+        ]
+      },
+      {
+        "rank": "lieutenant",
+        "choices": [
+          { "id": "spark_volatile", "name": "Volatile", "description": "Overdrive damage reduced; gain bonus to melee after using it.", "source": "shens_last_gift", "approx": true },
+          { "id": "spark_integrated", "name": "Integrated Systems", "description": "All special abilities cost 1 less action.", "source": "shens_last_gift", "approx": true }
+        ]
+      },
+      {
+        "rank": "captain",
+        "choices": [
+          { "id": "spark_wrecking_ball", "name": "Wrecking Ball", "description": "Move through destructible cover without spending extra movement.", "source": "shens_last_gift" },
+          { "id": "spark_sacrificial", "name": "Sacrificial Protocol", "description": "Take damage on behalf of an adjacent ally once per turn.", "source": "shens_last_gift", "approx": true }
+        ]
+      },
+      {
+        "rank": "major",
+        "choices": [
+          { "id": "spark_haywire", "name": "Haywire Protocol", "description": "Attempt to take control of a robotic enemy.", "source": "shens_last_gift" },
+          { "id": "spark_adaptive", "name": "Adaptive Aim", "description": "+5 aim per consecutive shot at the same target.", "source": "shens_last_gift", "approx": true }
+        ]
+      },
+      {
+        "rank": "colonel",
+        "choices": [
+          { "id": "spark_bombard", "name": "Bombard", "description": "Fire a powerful salvo that damages all enemies in an area.", "source": "shens_last_gift", "approx": true },
+          { "id": "spark_fortress", "name": "Fortress Protocol", "description": "Passively reduce incoming damage.", "source": "shens_last_gift", "approx": true }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reaper",
+    "name": "Reaper",
+    "description": "Faction hero (WotC). Guerrilla scout who excels in concealment and solo flank play. Uses the Vektor rifle and claymores.",
+    "source": "wotc",
+    "squaddieFreeAbility": {
+      "id": "reaper_silent_killer",
+      "name": "Silent Killer",
+      "description": "Kills with the Vektor Rifle do not break concealment.",
+      "source": "wotc"
+    },
+    "ranks": [
+      {
+        "rank": "corporal",
+        "choices": [
+          { "id": "reaper_banish", "name": "Banish", "description": "Fire multiple shots at a target; each hit after the first costs 1 ammo. Ends turn.", "source": "wotc" },
+          { "id": "reaper_shadow", "name": "Shadow", "description": "Activate Shadow to enter a deep concealment state (once per mission).", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "sergeant",
+        "choices": [
+          { "id": "reaper_claymore", "name": "Claymore", "description": "Plant a remote-detonated explosive that deals heavy damage.", "source": "wotc" },
+          { "id": "reaper_distraction", "name": "Distraction", "description": "Toss a decoy device to draw enemy attention.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "lieutenant",
+        "choices": [
+          { "id": "reaper_reapers_mark", "name": "Reaper's Mark", "description": "Tag an enemy; kills on that enemy grant bonus XP and may not end concealment.", "source": "wotc" },
+          { "id": "reaper_remote_start", "name": "Remote Start", "description": "Detonate any explosive device from range as a free action.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "captain",
+        "choices": [
+          { "id": "reaper_bladestorm", "name": "Bladestorm", "description": "Automatically counter any enemy that moves adjacent.", "source": "wotc" },
+          { "id": "reaper_ghost_of_war", "name": "Ghost of War", "description": "Reduce Reaper's visibility radius even further.", "source": "wotc", "approx": true }
+        ]
+      },
+      {
+        "rank": "major",
+        "choices": [
+          { "id": "reaper_apex_ammo", "name": "Apex Ammo", "description": "Banish shots also inflict Rupture.", "source": "wotc", "approx": true },
+          { "id": "reaper_kill_zone", "name": "Kill Zone", "description": "Take overwatch shots against all enemies in your aim cone.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "colonel",
+        "choices": [
+          { "id": "reaper_death_dealer", "name": "Death Dealer", "description": "Banish costs 1 less ammo per shot.", "source": "wotc", "approx": true },
+          { "id": "reaper_phantom", "name": "Phantom", "description": "When the squad is revealed, this soldier remains concealed.", "source": "wotc" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "skirmisher",
+    "name": "Skirmisher",
+    "description": "Faction hero (WotC). Former ADVENT trooper. Highly mobile melee/ranged hybrid with a grapple hook. Gains extra actions from Justice and Wrath.",
+    "source": "wotc",
+    "squaddieFreeAbility": {
+      "id": "skirmisher_reckoning",
+      "name": "Reckoning",
+      "description": "Melee attack that also pulls the target toward you.",
+      "source": "wotc"
+    },
+    "ranks": [
+      {
+        "rank": "corporal",
+        "choices": [
+          { "id": "skirmisher_justice", "name": "Justice", "description": "Fire your grapple at a distant enemy, pulling them to you and stunning them.", "source": "wotc" },
+          { "id": "skirmisher_wrath", "name": "Wrath", "description": "Propel yourself to an enemy and strike with a melee attack.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "sergeant",
+        "choices": [
+          { "id": "skirmisher_reflex", "name": "Reflex", "description": "Gain a free action at the start of your turn.", "source": "wotc" },
+          { "id": "skirmisher_opportunist", "name": "Opportunist", "description": "Reaction fire does not suffer the normal aim penalty.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "lieutenant",
+        "choices": [
+          { "id": "skirmisher_combat_presence", "name": "Combat Presence", "description": "Once per turn, fire your weapon at an enemy who fires at one of your allies.", "source": "wotc" },
+          { "id": "skirmisher_interrupt", "name": "Interrupt", "description": "Set an interrupt to fire before an enemy acts.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "captain",
+        "choices": [
+          { "id": "skirmisher_battlelord", "name": "Battlelord", "description": "Interrupt can trigger once per enemy turn.", "source": "wotc" },
+          { "id": "skirmisher_threat_assessment", "name": "Threat Assessment", "description": "Aid Protocol (requires Specialist bond) or bonus overwatch on ally.", "source": "wotc", "approx": true }
+        ]
+      },
+      {
+        "rank": "major",
+        "choices": [
+          { "id": "skirmisher_whiplash", "name": "Whiplash", "description": "Justice and Wrath abilities deal bonus damage.", "source": "wotc", "approx": true },
+          { "id": "skirmisher_marauder", "name": "Marauder", "description": "Kills grant a free move action.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "colonel",
+        "choices": [
+          { "id": "skirmisher_highstrung", "name": "High-Strung", "description": "Start each mission with Interrupt already set.", "source": "wotc", "approx": true },
+          { "id": "skirmisher_reaper", "name": "Reaper", "description": "Kills with the blade do not end the turn.", "source": "wotc" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "templar",
+    "name": "Templar",
+    "description": "Faction hero (WotC). Psionic melee warrior who gains Focus from kills to unleash powerful attacks. No firearm — uses a psi-blade.",
+    "source": "wotc",
+    "squaddieFreeAbility": {
+      "id": "templar_focus",
+      "name": "Focus",
+      "description": "Gain Focus charges from kills and certain actions. Focus enhances other abilities.",
+      "source": "wotc",
+      "passive": true
+    },
+    "ranks": [
+      {
+        "rank": "corporal",
+        "choices": [
+          { "id": "templar_volt", "name": "Volt", "description": "Arc lightning between nearby enemies. Damage scales with Focus.", "source": "wotc" },
+          { "id": "templar_rend", "name": "Rend", "description": "Powerful melee strike; damage scales with Focus.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "sergeant",
+        "choices": [
+          { "id": "templar_reflect", "name": "Reflect", "description": "Chance to deflect a ranged attack back at the attacker.", "source": "wotc" },
+          { "id": "templar_parry", "name": "Parry", "description": "Passively dodge the first melee attack each turn.", "source": "wotc", "passive": true }
+        ]
+      },
+      {
+        "rank": "lieutenant",
+        "choices": [
+          { "id": "templar_null_lance", "name": "Null Lance", "description": "Fire a piercing psionic beam. Damage scales with Focus.", "source": "wotc" },
+          { "id": "templar_bladestorm", "name": "Bladestorm", "description": "Automatically counter adjacent enemies. Grants Focus on triggered attacks.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "captain",
+        "choices": [
+          { "id": "templar_fortress", "name": "Fortress", "description": "Passively resist psionic and status effects.", "source": "wotc", "passive": true },
+          { "id": "templar_rift", "name": "Rift", "description": "Powerful area psionic explosion. Requires 3 Focus. Resets Focus to 0.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "major",
+        "choices": [
+          { "id": "templar_amplify", "name": "Amplify", "description": "Increase max Focus by 1.", "source": "wotc", "passive": true },
+          { "id": "templar_ghost", "name": "Ghost", "description": "At max Focus, activate to create a phantom copy that fights alongside you.", "source": "wotc" }
+        ]
+      },
+      {
+        "rank": "colonel",
+        "choices": [
+          { "id": "templar_arc_wave", "name": "Arc Wave", "description": "Send a wave of psionic energy along the ground, hitting all enemies in a line.", "source": "wotc" },
+          { "id": "templar_apotheosis", "name": "Apotheosis", "description": "Killing an enemy restores Focus faster and grants bonus HP temporarily.", "source": "wotc", "approx": true }
+        ]
+      }
+    ]
+  }
+]

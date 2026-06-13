@@ -1,0 +1,124 @@
+[
+  {
+    "id": "de_brutal_advent",
+    "name": "Brutal ADVENT",
+    "description": "ADVENT troops gain increased HP.",
+    "effect": "+2 HP to all ADVENT troopers and officers for the duration.",
+    "source": "base",
+    "duration": "~21 days (one Dark Event cycle)"
+  },
+  {
+    "id": "de_gatecrasher",
+    "name": "Gatecrasher Protocol",
+    "description": "ADVENT deploys additional soldiers in ambush missions.",
+    "effect": "ADVENT ambush and retaliation missions spawn extra reinforcement pods.",
+    "source": "base",
+    "duration": "~21 days"
+  },
+  {
+    "id": "de_tactical_evolution",
+    "name": "Tactical Evolution",
+    "description": "ADVENT soldiers are more aggressive and coordinated.",
+    "effect": "ADVENT pods become more active during overwatch and engage faster.",
+    "source": "base",
+    "duration": "~21 days"
+  },
+  {
+    "id": "de_incoming",
+    "name": "Incoming",
+    "description": "ADVENT increases its Avatar Project funding, advancing the doom clock.",
+    "effect": "+2 Avatar Project pips immediately.",
+    "source": "base",
+    "duration": "Permanent (instant effect)"
+  },
+  {
+    "id": "de_localized_power",
+    "name": "Localized Power",
+    "description": "ADVENT restricts power to the Avenger.",
+    "effect": "One Avenger facility is randomly disabled for the duration.",
+    "source": "base",
+    "duration": "~21 days"
+  },
+  {
+    "id": "de_price_of_progress",
+    "name": "Price of Progress",
+    "description": "ADVENT propaganda increases civilian support costs.",
+    "effect": "Intel cost for Covert Ops and some activities is increased.",
+    "source": "base",
+    "duration": "~21 days"
+  },
+  {
+    "id": "de_supply_denial",
+    "name": "Supply Denial",
+    "description": "ADVENT intercepts a supply convoy.",
+    "effect": "Lose Supplies from an upcoming supply drop.",
+    "source": "base",
+    "duration": "Permanent (instant effect)"
+  },
+  {
+    "id": "de_not_dead_yet",
+    "name": "Not Dead Yet",
+    "description": "Wounded ADVENT troops fight more stubbornly.",
+    "effect": "ADVENT soldiers don't panic at low HP — they fight until killed.",
+    "source": "base",
+    "duration": "~21 days"
+  },
+  {
+    "id": "de_rapid_response",
+    "name": "Rapid Response",
+    "description": "ADVENT deploys forces faster to defend facilities.",
+    "effect": "Reinforcements arrive 1 turn earlier on timed missions.",
+    "source": "base",
+    "duration": "~21 days"
+  },
+  {
+    "id": "de_psych_warfare",
+    "name": "Psychological Warfare",
+    "description": "ADVENT broadcasts demoralizing transmissions.",
+    "effect": "Soldiers have reduced Will, making them more susceptible to panic and psionic attacks.",
+    "source": "base",
+    "duration": "~21 days"
+  },
+  {
+    "id": "de_hidden_threat",
+    "name": "Hidden Threat",
+    "description": "ADVENT plants sleeper agents near XCOM bases.",
+    "effect": "Contact with a new region requires extra Intel or triggers a Resistance contact disruption.",
+    "source": "base",
+    "duration": "~21 days",
+    "approx": true
+  },
+  {
+    "id": "de_facility_lead",
+    "name": "Alien Facility Construction",
+    "description": "ADVENT accelerates construction of a new alien facility.",
+    "effect": "+1 Avatar Project pip if not countered by assaulting the facility in time.",
+    "source": "base",
+    "duration": "~21 days (build timer)"
+  },
+  {
+    "id": "de_chosen_hunt_wotc",
+    "name": "Chosen Ambush",
+    "description": "WotC: A Chosen has intelligence on XCOM's location and launches a targeted mission.",
+    "effect": "A Chosen appears on a random mission this cycle with boosted knowledge.",
+    "source": "wotc",
+    "duration": "One occurrence"
+  },
+  {
+    "id": "de_alien_cypher_wotc",
+    "name": "Alien Cipher",
+    "description": "WotC: The alien network encrypts XCOM intel channels.",
+    "effect": "Covert Ops information is obscured; missions may not show soldier risk levels.",
+    "source": "wotc",
+    "duration": "~21 days",
+    "approx": true
+  },
+  {
+    "id": "de_retaliation_forces_wotc",
+    "name": "Retaliation Forces",
+    "description": "WotC: ADVENT and Chosen coordinate a large retaliation strike.",
+    "effect": "Next retaliation mission includes a Chosen and extra ADVENT soldiers.",
+    "source": "wotc",
+    "duration": "One occurrence"
+  }
+]

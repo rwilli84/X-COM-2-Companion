@@ -1,0 +1,513 @@
+[
+  {
+    "id": "advent_trooper",
+    "name": "ADVENT Trooper",
+    "description": "Standard ADVENT infantry. Low threat individually but dangerous in groups.",
+    "source": "base",
+    "faction": "ADVENT",
+    "difficultyStats": {
+      "rookie":    { "hp": 4,  "armor": 0, "mobility": 12, "will": 50 },
+      "veteran":   { "hp": 5,  "armor": 0, "mobility": 12, "will": 50 },
+      "commander": { "hp": 6,  "armor": 0, "mobility": 12, "will": 50 },
+      "legend":    { "hp": 7,  "armor": 0, "mobility": 12, "will": 50 }
+    },
+    "abilities": [
+      { "name": "Suppressive Fire", "description": "Pin down an XCOM soldier, reducing their aim." }
+    ],
+    "counterTip": "Easy to kill. Flank for free crits or use grenades to destroy their cover."
+  },
+  {
+    "id": "advent_officer",
+    "name": "ADVENT Officer",
+    "description": "ADVENT squad leader. Buffs nearby troops and calls in reinforcements.",
+    "source": "base",
+    "faction": "ADVENT",
+    "difficultyStats": {
+      "rookie":    { "hp": 6,  "armor": 0, "mobility": 12, "will": 60 },
+      "veteran":   { "hp": 8,  "armor": 0, "mobility": 12, "will": 60 },
+      "commander": { "hp": 9,  "armor": 0, "mobility": 12, "will": 60 },
+      "legend":    { "hp": 10, "armor": 0, "mobility": 12, "will": 60 }
+    },
+    "abilities": [
+      { "name": "Mark Target", "description": "All ADVENT allies gain +15 aim against the marked XCOM soldier." },
+      { "name": "Summon Reinforcements", "description": "Calls in a reinforcement pod when the squad is revealed." }
+    ],
+    "counterTip": "Priority target. Kill the Officer first to prevent reinforcements and remove the aim buff."
+  },
+  {
+    "id": "advent_stun_lancer",
+    "name": "ADVENT Stun Lancer",
+    "description": "Close-range ADVENT unit armed with an electric lance. Dangerous in melee.",
+    "source": "base",
+    "faction": "ADVENT",
+    "difficultyStats": {
+      "rookie":    { "hp": 6,  "armor": 0, "mobility": 14, "will": 50 },
+      "veteran":   { "hp": 8,  "armor": 0, "mobility": 14, "will": 50 },
+      "commander": { "hp": 9,  "armor": 0, "mobility": 14, "will": 50 },
+      "legend":    { "hp": 10, "armor": 0, "mobility": 14, "will": 50 }
+    },
+    "abilities": [
+      { "name": "Arc Wave", "description": "Stuns nearby XCOM soldiers. Can hit multiple targets." },
+      { "name": "Lancer Charge", "description": "Dashes toward a soldier and deals melee damage, applying Stun." }
+    ],
+    "counterTip": "Keep your soldiers spread out. Kill before it closes to melee range. Bladestorm Rangers can punish their dash."
+  },
+  {
+    "id": "advent_shieldbearer",
+    "name": "ADVENT Shieldbearer",
+    "description": "Support unit that projects energy shields to protect nearby ADVENT troops.",
+    "source": "base",
+    "faction": "ADVENT",
+    "difficultyStats": {
+      "rookie":    { "hp": 6,  "armor": 0, "mobility": 12, "will": 50 },
+      "veteran":   { "hp": 7,  "armor": 0, "mobility": 12, "will": 50 },
+      "commander": { "hp": 8,  "armor": 0, "mobility": 12, "will": 50 },
+      "legend":    { "hp": 9,  "armor": 0, "mobility": 12, "will": 50 }
+    },
+    "abilities": [
+      { "name": "Energy Shield", "description": "Grants +2 HP shield to all nearby ADVENT allies until they are hit." }
+    ],
+    "counterTip": "Top priority — their shield makes every other enemy tankier. Kill or hack first. Hack rewards are often great."
+  },
+  {
+    "id": "advent_mec",
+    "name": "ADVENT MEC",
+    "description": "Mechanized ADVENT trooper. High HP and armor. Slow but devastating.",
+    "source": "base",
+    "faction": "ADVENT",
+    "difficultyStats": {
+      "rookie":    { "hp": 10, "armor": 2, "mobility": 10, "will": 100 },
+      "veteran":   { "hp": 12, "armor": 3, "mobility": 10, "will": 100 },
+      "commander": { "hp": 14, "armor": 3, "mobility": 10, "will": 100 },
+      "legend":    { "hp": 16, "armor": 4, "mobility": 10, "will": 100 }
+    },
+    "abilities": [
+      { "name": "Minigun", "description": "Fires multiple shots in a cone, hitting all in range." },
+      { "name": "Explode on Death", "description": "Detonates when killed, dealing AoE damage.", "approx": true }
+    ],
+    "counterTip": "Use Shredder (Grenadier) to reduce armor first. Explosives and flanking shots work well."
+  },
+  {
+    "id": "sectoid",
+    "name": "Sectoid",
+    "description": "Alien psionic unit. Can reanimate fallen soldiers and panic or mind control your troops.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 4,  "armor": 0, "mobility": 12, "will": 80 },
+      "veteran":   { "hp": 5,  "armor": 0, "mobility": 12, "will": 80 },
+      "commander": { "hp": 6,  "armor": 0, "mobility": 12, "will": 80 },
+      "legend":    { "hp": 7,  "armor": 0, "mobility": 12, "will": 80 }
+    },
+    "abilities": [
+      { "name": "Mindspin", "description": "Inflicts Panic on a soldier. Panicked soldiers fire randomly." },
+      { "name": "Psionic Reanimate", "description": "Reanimates a fallen human corpse as a zombie under Sectoid control." },
+      { "name": "Mind Control", "description": "Takes full control of a soldier (higher-tier Sectoids only)." }
+    ],
+    "counterTip": "Kill priority. Their psionics ignore cover. Any reanimated zombies die when the Sectoid dies. Psi Operative Solace aura protects nearby soldiers."
+  },
+  {
+    "id": "viper",
+    "name": "Viper",
+    "description": "Alien serpentine unit. Can grab and squeeze soldiers, removing them from play until rescued.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 8,  "armor": 0, "mobility": 14, "will": 50 },
+      "veteran":   { "hp": 10, "armor": 0, "mobility": 14, "will": 50 },
+      "commander": { "hp": 11, "armor": 0, "mobility": 14, "will": 50 },
+      "legend":    { "hp": 12, "armor": 0, "mobility": 14, "will": 50 }
+    },
+    "abilities": [
+      { "name": "Bind", "description": "Grabs an adjacent soldier and begins crushing them each turn. Bound soldier cannot act." },
+      { "name": "Tongue Pull", "description": "Pulls a distant soldier adjacent to the Viper. Does not end turn." },
+      { "name": "Poison Spit", "description": "AoE poisonous cloud. Slows and damages all caught in it." }
+    ],
+    "counterTip": "Kill immediately if it binds a soldier. Bladestorm Rangers can punish the tongue pull. Keep spacing tight to avoid tongue pulls isolating soldiers."
+  },
+  {
+    "id": "muton",
+    "name": "Muton",
+    "description": "Aggressive alien heavy trooper. High HP, grenade throwers, melee counter-attack.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 10, "armor": 1, "mobility": 12, "will": 70 },
+      "veteran":   { "hp": 12, "armor": 1, "mobility": 12, "will": 70 },
+      "commander": { "hp": 14, "armor": 2, "mobility": 12, "will": 70 },
+      "legend":    { "hp": 16, "armor": 2, "mobility": 12, "will": 70 }
+    },
+    "abilities": [
+      { "name": "Bloodlust", "description": "Counter-attacks any soldier that misses a melee attack against them." },
+      { "name": "Battle Frenzy", "description": "Gains +1 action after a nearby Muton is killed." },
+      { "name": "Alien Grenade", "description": "Throws a large-radius grenade that destroys cover." }
+    ],
+    "counterTip": "Never melee them — they counter. Use grenades to break cover then shoot. Shredder Cannon to strip armor."
+  },
+  {
+    "id": "berserker",
+    "name": "Berserker",
+    "description": "Massive, enraged alien brawler. Charges toward your soldiers and attacks any adjacent unit.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 14, "armor": 1, "mobility": 16, "will": 100 },
+      "veteran":   { "hp": 16, "armor": 2, "mobility": 16, "will": 100 },
+      "commander": { "hp": 18, "armor": 2, "mobility": 16, "will": 100 },
+      "legend":    { "hp": 20, "armor": 3, "mobility": 16, "will": 100 }
+    },
+    "abilities": [
+      { "name": "Rampage", "description": "When damaged, the Berserker immediately moves toward the attacker and attacks if adjacent." },
+      { "name": "Charge", "description": "Closes distance quickly and attacks." },
+      { "name": "Enrage", "description": "When near death, gains additional actions." }
+    ],
+    "counterTip": "Use elevation and distance. Shoot-and-scoot tactics. Never let it reach melee range. Stasis a damaged Berserker before it rampages. Bluescreen bombs work on nothing here — use AP rounds or explosives."
+  },
+  {
+    "id": "archon",
+    "name": "Archon",
+    "description": "Alien flying warrior priest. High mobility and devastating melee attack. Replaces Floaters from XCOM 1.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 12, "armor": 0, "mobility": 16, "will": 70 },
+      "veteran":   { "hp": 14, "armor": 1, "mobility": 16, "will": 70 },
+      "commander": { "hp": 15, "armor": 1, "mobility": 16, "will": 70 },
+      "legend":    { "hp": 16, "armor": 1, "mobility": 16, "will": 70 }
+    },
+    "abilities": [
+      { "name": "Blazing Pinions", "description": "Winds up for one turn then fires a powerful ranged barrage at a soldier." },
+      { "name": "Fly", "description": "Can freely fly, taking high-ground advantage and moving over obstacles." }
+    ],
+    "counterTip": "Interrupt Blazing Pinions if possible (WotC Skirmisher). Otherwise kill it before it fires. Elevation doesn't help you against a flier."
+  },
+  {
+    "id": "andromedon",
+    "name": "Andromedon",
+    "description": "Alien inside an armored suit. When the suit is destroyed, the pilot emerges and self-destructs.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 12, "armor": 4, "mobility": 10 },
+      "veteran":   { "hp": 14, "armor": 4, "mobility": 10 },
+      "commander": { "hp": 16, "armor": 5, "mobility": 10 },
+      "legend":    { "hp": 18, "armor": 5, "mobility": 10 }
+    },
+    "abilities": [
+      { "name": "Acid Trail", "description": "Leaves a trail of acid that damages soldiers and destroys cover." },
+      { "name": "Rebirth", "description": "When the suit is destroyed, the biological alien pilot emerges and continues fighting." }
+    ],
+    "counterTip": "After killing the suit, finish the pilot immediately or it will explode. Plasma weapons or armor shredding reduces time to kill. Don't cluster — acid trail is nasty."
+  },
+  {
+    "id": "faceless",
+    "name": "Faceless",
+    "description": "Shapeshifting alien that disguises itself as a civilian. Reveals and transforms when near XCOM soldiers.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 10, "armor": 0, "mobility": 14 },
+      "veteran":   { "hp": 12, "armor": 0, "mobility": 14 },
+      "commander": { "hp": 14, "armor": 0, "mobility": 14 },
+      "legend":    { "hp": 16, "armor": 0, "mobility": 14 }
+    },
+    "abilities": [
+      { "name": "Mimic", "description": "Appears as a harmless civilian until adjacent to an XCOM soldier or attacked." },
+      { "name": "Rend", "description": "Heavy melee attack after transforming." }
+    ],
+    "counterTip": "Scan with Specialist before civilians get close. They're vulnerable right after transforming. ADVENT Stasis also reveals them."
+  },
+  {
+    "id": "chryssalid",
+    "name": "Chryssalid",
+    "description": "Fast melee alien that implants eggs in killed humans. Infested victims rise as Chryssalid zombies.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 8,  "armor": 0, "mobility": 20 },
+      "veteran":   { "hp": 10, "armor": 0, "mobility": 20 },
+      "commander": { "hp": 12, "armor": 0, "mobility": 20 },
+      "legend":    { "hp": 14, "armor": 0, "mobility": 20 }
+    },
+    "abilities": [
+      { "name": "Cocoon", "description": "A civilian or killed soldier killed by a Chryssalid becomes a cocoon that hatches 3 Chryssalids." },
+      { "name": "Charge", "description": "Very high mobility — can close gaps in one move." }
+    ],
+    "counterTip": "Never let them reach your soldiers. Use explosives proactively. If a civilian is infected, kill the cocoon before it hatches. Suppress or stasis buys time."
+  },
+  {
+    "id": "codex",
+    "name": "Codex",
+    "description": "Psionic alien information broker. Splits when damaged and disrupts your soldiers' weapons.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 8,  "armor": 0, "mobility": 14 },
+      "veteran":   { "hp": 10, "armor": 0, "mobility": 14 },
+      "commander": { "hp": 12, "armor": 0, "mobility": 14 },
+      "legend":    { "hp": 14, "armor": 0, "mobility": 14 }
+    },
+    "abilities": [
+      { "name": "Cypher", "description": "Disables the weapons of XCOM soldiers in range for 1 turn." },
+      { "name": "Clone", "description": "When damaged but not killed, creates a copy of itself." },
+      { "name": "Psionic Rift", "description": "Deals psionic damage in an area." }
+    ],
+    "counterTip": "Use Bluescreen bombs or hacking to disable it. Kill in one activation if possible to prevent cloning. Psi Op Stasis stops it from cloning."
+  },
+  {
+    "id": "gatekeeper",
+    "name": "Gatekeeper",
+    "description": "Massive alien sphere. Can open to reveal powerful psionic abilities and summon Sectoids.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 16, "armor": 4, "mobility": 10 },
+      "veteran":   { "hp": 18, "armor": 4, "mobility": 10 },
+      "commander": { "hp": 20, "armor": 5, "mobility": 10 },
+      "legend":    { "hp": 24, "armor": 6, "mobility": 10 }
+    },
+    "abilities": [
+      { "name": "Soul Harvest", "description": "In open state, drains life from all XCOM soldiers in range." },
+      { "name": "Closed Sphere", "description": "In closed state, +4 armor but limited abilities. Must open to use psionics." },
+      { "name": "Summon Sectoids", "description": "Can reanimate fallen units in its vicinity." }
+    ],
+    "counterTip": "Focus fire while it's in open state — its armor is reduced. Explosives shred its armor. Bluescreen bombs deal bonus damage. Rush it before it can summon."
+  },
+  {
+    "id": "sectopod",
+    "name": "Sectopod",
+    "description": "Massive alien walker. The most powerful non-boss enemy. Extremely high HP and armor, devastating weapons.",
+    "source": "base",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 24, "armor": 6, "mobility": 10 },
+      "veteran":   { "hp": 28, "armor": 8, "mobility": 10 },
+      "commander": { "hp": 32, "armor": 8, "mobility": 10 },
+      "legend":    { "hp": 36, "armor": 10, "mobility": 10 }
+    },
+    "abilities": [
+      { "name": "Stomp", "description": "Destroys cover and deals massive AoE damage to adjacent soldiers." },
+      { "name": "Overwatch Stance", "description": "Enters overwatch — fires at every soldier who moves in range." },
+      { "name": "Lightning Field", "description": "Electrifies the immediate area, damaging and stunning adjacents." }
+    ],
+    "counterTip": "Hack it if possible (big Gremlin bonus, Specialist is great here). Otherwise: Bluescreen bombs, stasis, max explosives, then focus fire. Do not let it move into your squad — its stomp is devastating."
+  },
+  {
+    "id": "elder_avatar",
+    "name": "Avatar",
+    "description": "The Elders' physical form. One of the strongest enemies in the game. High psi powers, can revive nearby aliens.",
+    "source": "base",
+    "faction": "Elder",
+    "difficultyStats": {
+      "rookie":    { "hp": 14, "armor": 0, "mobility": 14, "will": 200, "approx": true },
+      "veteran":   { "hp": 16, "armor": 0, "mobility": 14, "will": 200, "approx": true },
+      "commander": { "hp": 18, "armor": 0, "mobility": 14, "will": 200, "approx": true },
+      "legend":    { "hp": 20, "armor": 0, "mobility": 14, "will": 200, "approx": true }
+    },
+    "abilities": [
+      { "name": "Psionic Storm", "description": "Massive area psionic attack damaging and panicking XCOM soldiers." },
+      { "name": "Sustain", "description": "Can automatically survive a lethal hit with 1 HP (once)." },
+      { "name": "Revive Alien", "description": "Revive a fallen alien unit." },
+      { "name": "Mind Control", "description": "Takes full control of a soldier." }
+    ],
+    "counterTip": "Bring your best psionics (Domination, Stasis). Kill as fast as possible before Sustain triggers. Flashbangs/Disorientation stops most psi abilities.",
+    "approx": true
+  },
+  {
+    "id": "viper_king",
+    "name": "Viper King",
+    "description": "Alien Ruler — a supercharged Viper that reacts to every XCOM action with its own reaction. Massive health pool.",
+    "source": "alien_hunters",
+    "faction": "Alien Ruler",
+    "isRuler": true,
+    "rulerReactionNote": "After each XCOM action (not just turn), the Viper King takes a free reaction action: move, attack, bind, or flee. Use Ruler Reaction items (e.g., Hunter's Axe) to stun it and prevent reactions.",
+    "difficultyStats": {
+      "rookie":    { "hp": 40, "armor": 4, "mobility": 16, "approx": true },
+      "veteran":   { "hp": 50, "armor": 5, "mobility": 16, "approx": true },
+      "commander": { "hp": 60, "armor": 6, "mobility": 16, "approx": true },
+      "legend":    { "hp": 70, "armor": 7, "mobility": 16, "approx": true }
+    },
+    "abilities": [
+      { "name": "Freeze Breath", "description": "Freezes all soldiers in a wide cone for 1-2 turns." },
+      { "name": "Bind", "description": "Grabs and crushes a soldier every turn until freed." },
+      { "name": "Tongue Pull", "description": "Pulls a distant soldier adjacent." },
+      { "name": "Ruler Reaction", "description": "Reacts after each XCOM action — not just on its turn.", "approx": false }
+    ],
+    "counterTip": "Equip the Hunter's Axe or other Ruler Reaction items before engagement. Use Stasis to skip its reaction turn. Prioritize breaking the Bind. Freeze is debilitating — spread out. Use Bluescreen bombs + explosives."
+  },
+  {
+    "id": "berserker_queen",
+    "name": "Berserker Queen",
+    "description": "Alien Ruler — a massive, enraged Berserker that reacts to every XCOM action.",
+    "source": "alien_hunters",
+    "faction": "Alien Ruler",
+    "isRuler": true,
+    "rulerReactionNote": "After each XCOM action, the Berserker Queen takes a free reaction: charge, attack, or move. Hunter's Axe and similar items prevent her reaction for that action.",
+    "difficultyStats": {
+      "rookie":    { "hp": 50, "armor": 4, "mobility": 18, "approx": true },
+      "veteran":   { "hp": 60, "armor": 5, "mobility": 18, "approx": true },
+      "commander": { "hp": 70, "armor": 6, "mobility": 18, "approx": true },
+      "legend":    { "hp": 80, "armor": 7, "mobility": 18, "approx": true }
+    },
+    "abilities": [
+      { "name": "Rampage", "description": "After being damaged, immediately charges the attacker and attacks if adjacent." },
+      { "name": "Shockwave", "description": "Slams the ground, knocking back and damaging all nearby soldiers." },
+      { "name": "Ruler Reaction", "description": "Reacts after each XCOM action." }
+    ],
+    "counterTip": "Never bunch up. Use Stasis and Psi Stasis to neutralize her reaction turns. Explosive weapons (plasma grenades) + AP rounds. SPARK with Haywire Protocol can lock her down temporarily."
+  },
+  {
+    "id": "archon_king",
+    "name": "Archon King",
+    "description": "Alien Ruler — an ascended Archon with devastating area attacks and ruler reactions.",
+    "source": "alien_hunters",
+    "faction": "Alien Ruler",
+    "isRuler": true,
+    "rulerReactionNote": "After each XCOM action, the Archon King takes a free reaction: fly, attack, or use Blazing Pinions (charge is faster with fewer turns). Hunter's Axe prevents the reaction.",
+    "difficultyStats": {
+      "rookie":    { "hp": 45, "armor": 3, "mobility": 20, "approx": true },
+      "veteran":   { "hp": 55, "armor": 4, "mobility": 20, "approx": true },
+      "commander": { "hp": 65, "armor": 5, "mobility": 20, "approx": true },
+      "legend":    { "hp": 75, "armor": 6, "mobility": 20, "approx": true }
+    },
+    "abilities": [
+      { "name": "Blazing Pinions", "description": "Charges for one action then fires a devastating area barrage the next — in Ruler form, this can trigger much more often." },
+      { "name": "Fly", "description": "Highly mobile, can reposition anywhere each reaction." },
+      { "name": "Ruler Reaction", "description": "Reacts after each XCOM action." }
+    ],
+    "counterTip": "Use the Ruler Reaction items. Try to stasis it during Blazing Pinions wind-up. High-aim soldiers for consistent damage through elevation. Avoid overwatch vs. a flying ruler."
+  },
+  {
+    "id": "the_lost",
+    "name": "The Lost",
+    "description": "WotC: Zombie-like former civilians. Attack in huge swarms. Any kill on a Lost grants a bonus action (free action, no ammo use).",
+    "source": "wotc",
+    "faction": "Lost",
+    "difficultyStats": {
+      "rookie":    { "hp": 2,  "armor": 0, "mobility": 14 },
+      "veteran":   { "hp": 3,  "armor": 0, "mobility": 14 },
+      "commander": { "hp": 4,  "armor": 0, "mobility": 14 },
+      "legend":    { "hp": 5,  "armor": 0, "mobility": 14 }
+    },
+    "abilities": [
+      { "name": "Headshot", "description": "Only a headshot (one-hit kill) grants the free action bonus. Multiple hits that chip them down grants nothing." },
+      { "name": "Swarm", "description": "Arrive in large numbers, often 10–20+ per encounter. Overwhelm by sheer volume." }
+    ],
+    "counterTip": "Always headshot — don't chip them. Pistols and precise single-shot weapons are ideal. Lost and ADVENT will also fight each other — use this! Grenades kill groups but waste the free action chain."
+  },
+  {
+    "id": "spectre",
+    "name": "Spectre",
+    "description": "WotC: Psionic alien that can create shadow copies of your soldiers and turn them against you.",
+    "source": "wotc",
+    "faction": "Alien",
+    "difficultyStats": {
+      "rookie":    { "hp": 10, "armor": 0, "mobility": 14, "approx": true },
+      "veteran":   { "hp": 12, "armor": 0, "mobility": 14, "approx": true },
+      "commander": { "hp": 14, "armor": 0, "mobility": 14, "approx": true },
+      "legend":    { "hp": 16, "armor": 0, "mobility": 14, "approx": true }
+    },
+    "abilities": [
+      { "name": "Shadowbind", "description": "Creates a shadow clone of a soldier that fights against XCOM. The bound soldier cannot act while the clone lives." },
+      { "name": "Cloak", "description": "Can conceal itself from XCOM soldiers." }
+    ],
+    "counterTip": "Kill the shadow clone or the Spectre to free the bound soldier. Psi Stasis on the Spectre prevents Shadowbind. Prioritize Spectre when it activates."
+  },
+  {
+    "id": "advent_purifier",
+    "name": "ADVENT Purifier",
+    "description": "WotC: ADVENT unit armed with a flamethrower. Explodes violently on death.",
+    "source": "wotc",
+    "faction": "ADVENT",
+    "difficultyStats": {
+      "rookie":    { "hp": 7,  "armor": 0, "mobility": 12 },
+      "veteran":   { "hp": 9,  "armor": 0, "mobility": 12 },
+      "commander": { "hp": 10, "armor": 0, "mobility": 12 },
+      "legend":    { "hp": 11, "armor": 0, "mobility": 12 }
+    },
+    "abilities": [
+      { "name": "Flamethrower", "description": "Cone fire attack that applies Burn status." },
+      { "name": "Death Explosion", "description": "Explodes on death — do not cluster soldiers near dying Purifiers." }
+    ],
+    "counterTip": "Kill from range. Never let it flank into your cluster. Kill with a shot that won't cause collateral explosion damage to your squad."
+  },
+  {
+    "id": "advent_priest",
+    "name": "ADVENT Priest",
+    "description": "WotC: ADVENT psionic support unit. Can shield itself, stasis your soldiers, and resurrect dead ADVENT.",
+    "source": "wotc",
+    "faction": "ADVENT",
+    "difficultyStats": {
+      "rookie":    { "hp": 8,  "armor": 0, "mobility": 12, "will": 80 },
+      "veteran":   { "hp": 10, "armor": 0, "mobility": 12, "will": 80 },
+      "commander": { "hp": 11, "armor": 0, "mobility": 12, "will": 80 },
+      "legend":    { "hp": 12, "armor": 0, "mobility": 12, "will": 80 }
+    },
+    "abilities": [
+      { "name": "Stasis Shield", "description": "Passively puts itself in stasis when near death — invulnerable for 1 turn, then continues fighting." },
+      { "name": "Sustain", "description": "Can passively survive a lethal hit once." },
+      { "name": "Null Lance", "description": "Fires a psionic beam at a soldier." }
+    ],
+    "counterTip": "Kill quickly before Stasis Shield triggers — or use abilities that bypass it. Psi Stasis your soldier after they get Null Lanced to prevent further effects."
+  },
+  {
+    "id": "chosen_assassin",
+    "name": "The Assassin",
+    "description": "WotC Chosen: A stealth-based melee Chosen. Excels in close combat and can attack from concealment.",
+    "source": "wotc",
+    "faction": "Chosen",
+    "difficultyStats": {
+      "rookie":    { "hp": 20, "armor": 2, "mobility": 16, "approx": true },
+      "veteran":   { "hp": 25, "armor": 3, "mobility": 16, "approx": true },
+      "commander": { "hp": 30, "armor": 4, "mobility": 16, "approx": true },
+      "legend":    { "hp": 35, "armor": 5, "mobility": 16, "approx": true }
+    },
+    "abilities": [
+      { "name": "Concealment", "description": "Can cloak and attack from stealth, ignoring overwatch." },
+      { "name": "Annihilate", "description": "High damage melee attack." },
+      { "name": "Shadow Form", "description": "When badly damaged, retreats and becomes temporarily invulnerable." },
+      { "name": "Kidnap", "description": "Can grab and remove a soldier from play (they must be rescued)." }
+    ],
+    "counterTip": "Scanning Protocol reveals her concealment. Bladestorm Rangers punish her melee. Keep your squad spread so Annihilate can't chain. Learn her weaknesses to gain advantage."
+  },
+  {
+    "id": "chosen_hunter",
+    "name": "The Hunter",
+    "description": "WotC Chosen: Long-range sniper Chosen. Uses powerful shots and suppression to lock down your squad.",
+    "source": "wotc",
+    "faction": "Chosen",
+    "difficultyStats": {
+      "rookie":    { "hp": 20, "armor": 2, "mobility": 14, "approx": true },
+      "veteran":   { "hp": 25, "armor": 3, "mobility": 14, "approx": true },
+      "commander": { "hp": 30, "armor": 4, "mobility": 14, "approx": true },
+      "legend":    { "hp": 35, "armor": 5, "mobility": 14, "approx": true }
+    },
+    "abilities": [
+      { "name": "Suppression", "description": "Suppresses a target, reducing aim and granting a reaction shot." },
+      { "name": "Chain Shot", "description": "Fires multiple times at the same target." },
+      { "name": "Rapid Fire", "description": "Two shots at cost of one action (minus aim)." },
+      { "name": "Shadow Form", "description": "Withdraws when badly damaged." }
+    ],
+    "counterTip": "Smoke grenades and smashing his cover forces repositioning. Close the gap — he's weak in close quarters. Learn his weaknesses to deal bonus damage."
+  },
+  {
+    "id": "chosen_warlock",
+    "name": "The Warlock",
+    "description": "WotC Chosen: Psionic Chosen. Can summon spectral army, mind control soldiers, and blast with psi powers.",
+    "source": "wotc",
+    "faction": "Chosen",
+    "difficultyStats": {
+      "rookie":    { "hp": 18, "armor": 1, "mobility": 12, "will": 200, "approx": true },
+      "veteran":   { "hp": 22, "armor": 2, "mobility": 12, "will": 200, "approx": true },
+      "commander": { "hp": 26, "armor": 3, "mobility": 12, "will": 200, "approx": true },
+      "legend":    { "hp": 30, "armor": 4, "mobility": 12, "will": 200, "approx": true }
+    },
+    "abilities": [
+      { "name": "Spectral Army", "description": "Summons Spectre soldiers that fight for him. Must be cleared before focusing the Warlock." },
+      { "name": "Mind Control", "description": "Attempts to control a soldier." },
+      { "name": "Psi Storm", "description": "Massive area psionic damage." },
+      { "name": "Shadow Form", "description": "Withdraws when badly damaged." }
+    ],
+    "counterTip": "Psi Operative Solace aura protects from mind control. Kill the Spectral Army first or they'll drain your actions. Flashbangs Disorient him, stopping psi powers for a turn."
+  }
+]

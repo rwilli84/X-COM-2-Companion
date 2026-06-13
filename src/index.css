@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* ── Brand palette ─────────────────────────────────────────────────────────── */
+:root {
+  --bg:        #0c0b09;   /* warm near-black */
+  --surface:   #141210;   /* card background */
+  --surface2:  #1c1a17;   /* elevated surface */
+  --border:    #272320;   /* subtle warm border */
+  --border2:   #3a3530;   /* stronger border */
+  --text:      #ddd6cc;   /* warm off-white */
+  --text2:     #857870;   /* secondary text */
+  --text3:     #504540;   /* muted text */
+  --amber:     #f59e0b;   /* primary accent */
+  --amber-dim: #92600a;   /* amber at low opacity */
+}
+
+/* ── Tailwind theme overrides ──────────────────────────────────────────────── */
+@theme {
+  --color-neutral-950: var(--bg);
+  --color-neutral-900: var(--surface);
+  --color-neutral-800: var(--surface2);
+  --color-neutral-700: var(--border2);
+  --color-neutral-600: var(--text3);
+  --color-neutral-500: var(--text2);
+  --color-neutral-400: #a09088;
+  --color-neutral-300: #c8bdb5;
+  --color-neutral-200: var(--text);
+  --color-neutral-100: #ede8e2;
+}
+
+@layer components {
+  .field-label {
+    display: block;
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text3);
+    margin-bottom: 0.4rem;
+  }
+
+  /* Tactile card with warm depth */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+
+  /* Section divider */
+  .section-label {
+    font-size: 0.6rem;
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text3);
+  }
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+}
