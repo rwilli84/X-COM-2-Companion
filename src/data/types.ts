@@ -188,13 +188,25 @@ export interface ActiveDarkEvent {
   completed: boolean
 }
 
+export interface KnowledgeLogEntry {
+  timestamp: number
+  event: string
+}
+
 export interface ChosenData {
   id: string
   campaignId: string
   chosenType: 'assassin' | 'hunter' | 'warlock'
   strengths: string[]
   weaknesses: string[]
-  knowledgeLevel: 0 | 1 | 2 | 3 | 4 | 5
+  knowledgeTier: 0 | 1 | 2 | 3
+  knowledgeLog: KnowledgeLogEntry[]
+  strongholdRegion?: string
+  strongholdAssaulted: boolean
+  strongholdCompleted: boolean
+  killedByHero?: 'reaper' | 'skirmisher' | 'templar'
+  sacrificeUsed: boolean
+  capturedSoldierIds: string[]
   eliminated: boolean
 }
 
@@ -238,6 +250,7 @@ export interface Campaign {
   covertActions: CovertAction[]
   completedResearch: string[]
   pinnedResearchPaths: string[]
+  armory?: Record<string, number>  // itemId -> quantity in stock
   createdAt: number
   updatedAt: number
 }

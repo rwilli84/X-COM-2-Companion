@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { db } from '../db/database'
-import type { Campaign, Soldier, Mission, BondPair, DlcConfig, Difficulty } from '../data/types'
+import type { Campaign, Soldier, Mission, BondPair, DlcConfig, Difficulty, ChosenData } from '../data/types'
 import { DEFAULT_DLC } from '../data/types'
 import { nanoid } from 'nanoid'
 
@@ -38,6 +38,15 @@ interface CampaignState {
   updateBond: (id: string, patch: Partial<BondPair>) => Promise<void>
   deleteBond: (id: string) => Promise<void>
   campaignBonds: () => BondPair[]
+
+  // Chosen actions (WotC) — stored inside campaign.chosenData[]
+  initChosen: () => Promise<void>
+  campaignChosen: () => ChosenData[]
+  getChosen: (type: 'assassin' | 'hunter' | 'warlock') => ChosenData | undefined
+  updateChosen: (type: 'assassin' | 'hunter' | 'warlock', patch: Partial<ChosenData>) => Promise<void>
+
+  // Armory
+  updateArmoryItem: (itemId: string, qty: number) => Promise<void>
 
   // Export/import
   exportCampaign: (id: string) => Promise<string>
@@ -198,6 +207,61 @@ export const useCampaignStore = create<CampaignState>()((set, get) => ({
   campaignBonds: () => {
     const { activeCampaignId, bonds } = get()
     return bonds.filter(b => b.campaignId === activeCampaignId)
+  },
+
+  initChosen: async () => {
+    const { activeCampaign, updateCampaign } = get()
+    const campaign = activeCampaign()
+    if (!campaign) return
+    const types: Array<'assassin' | 'hunter' | 'warlock'> = ['assassin', 'hunter', 'warlock']
+    const existing = new Set(campaign.chosenData.map(c => c.chosenType))
+    const toAdd: ChosenData[] = types
+      .filter(t => !existing.has(t))
+      .map(t => ({
+        id: `${campaign.id}:${t}`,
+        campaignId: campaign.id,
+        chosenType: t,
+        strengths: [],
+        weaknesses: [],
+        knowledgeTier: 0 as const,
+        knowledgeLog: [],
+        strongholdAssaulted: false,
+        strongholdCompleted: false,
+        sacrificeUsed: false,
+        capturedSoldierIds: [],
+        eliminated: false,
+      }))
+    if (toAdd.length === 0) return
+    await get().updateCampaign(campaign.id, {
+      chosenData: [...campaign.chosenData, ...toAdd],
+    })
+  },
+
+  campaignChosen: () => {
+    const campaign = get().activeCampaign()
+    return campaign?.chosenData ?? []
+  },
+
+  getChosen: (type) => {
+    return get().campaignChosen().find(c => c.chosenType === type)
+  },
+
+  updateChosen: async (type, patch) => {
+    const { activeCampaign, updateCampaign } = get()
+    const campaign = activeCampaign()
+    if (!campaign) return
+    const updatedChosenData = campaign.chosenData.map(c =>
+      c.chosenType === type ? { ...c, ...patch } : c
+    )
+    await updateCampaign(campaign.id, { chosenData: updatedChosenData })
+  },
+
+  updateArmoryItem: async (itemId, qty) => {
+    const { activeCampaign, updateCampaign } = get()
+    const campaign = activeCampaign()
+    if (!campaign) return
+    const armory = { ...(campaign.armory ?? {}), [itemId]: Math.max(0, qty) }
+    await updateCampaign(campaign.id, { armory })
   },
 
   exportCampaign: async (id) => {

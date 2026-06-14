@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useCampaignStore } from '../../store/campaignStore'
 import { adviseEconomy, PROVING_GROUNDS_ITEMS } from '../../advisor/economyAdvisor'
+import { analyzeItemIncome } from '../../advisor/armory'
 import { computeDoomPressure } from '../../advisor/missionAdvisor'
 import type { InventorySnapshot, EconomyPlan } from '../../advisor/types'
 import { Button } from '../ui/Button'
@@ -282,6 +283,46 @@ export function EconomyPanel() {
           )}
         </div>
       )}
+
+      {/* Armory income analysis — shown when armory has stock */}
+      {(() => {
+        const armory = campaign?.armory ?? {}
+        const incomeEntries = analyzeItemIncome(armory).filter(e => e.qty > 0)
+        if (incomeEntries.length === 0) return null
+        return (
+          <div className="space-y-2">
+            <SectionHeading>Armory Items — Black Market ROI</SectionHeading>
+            <p className="text-[10px] font-mono mt-1" style={{ color: 'var(--text3)' }}>
+              Based on items logged in the Armory tab. Sorted by ROI per unit.
+            </p>
+            <div className="space-y-1.5">
+              {incomeEntries.map(entry => (
+                <div key={entry.itemId} className="border rounded-[2px] px-3 py-2.5 space-y-0.5" style={{ borderColor: 'var(--border)', background: 'var(--surface)' }}>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-mono text-sm font-semibold text-neutral-200">{entry.itemName}</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[10px] font-mono text-neutral-500">×{entry.qty}</span>
+                      <span className={`text-[10px] font-mono font-bold uppercase px-1.5 py-0.5 rounded-sm border ${
+                        entry.verdict === 'sell'          ? 'text-green-400 border-green-800/50' :
+                        entry.verdict === 'build-to-sell' ? 'text-amber-400 border-amber-800/50' :
+                                                            'text-neutral-500 border-neutral-700'
+                      }`}>
+                        {entry.verdict}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 text-[10px] font-mono text-neutral-500">
+                    <span>Market: <span className="text-neutral-300">{entry.marketValue}§</span></span>
+                    <span>Total: <span className="text-neutral-300">{entry.totalValue}§</span></span>
+                    <span>ROI: <span className="text-neutral-300">{entry.roi.toFixed(1)}×</span></span>
+                  </div>
+                  <p className="text-[10px] font-mono leading-snug" style={{ color: 'var(--text3)' }}>{entry.reason}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      })()}
     </div>
   )
 }

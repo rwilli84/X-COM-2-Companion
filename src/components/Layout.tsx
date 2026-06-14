@@ -73,7 +73,7 @@ const tabs = [
   { to: '/roster',   label: 'Roster',   Icon: IconRoster },
   { to: '/enemies',  label: 'Intel',    Icon: IconIntel },
   { to: '/avatar',   label: 'Avatar',   Icon: IconAvatar },
-  { to: '/research', label: 'Research', Icon: IconResearch },
+  { to: '/research', label: 'Avenger', Icon: IconResearch },
   { to: '/missions', label: 'Ops',      Icon: IconOps },
   { to: '/advisor',  label: 'Advisor',  Icon: IconAdvisor },
 ]
