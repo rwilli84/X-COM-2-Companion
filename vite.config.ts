@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/X-COM-2-Companion/',
+  base: '/',
   plugins: [
     react(),
     tailwindcss(),
