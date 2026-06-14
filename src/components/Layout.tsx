@@ -80,7 +80,7 @@ const tabs = [
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="h-full flex flex-col bg-neutral-950 max-w-2xl mx-auto relative">
+    <div className="h-full flex flex-col bg-neutral-950 max-w-2xl mx-auto relative pt-[env(safe-area-inset-top)]">
       <header className="shrink-0 px-4 h-12 border-b border-neutral-800 flex items-center justify-between">
         <span className="font-mono font-bold text-amber-500 tracking-[0.15em] text-sm uppercase">
           Resistance HQ
@@ -109,7 +109,7 @@ export function Layout({ children }: { children: ReactNode }) {
         {children}
       </main>
 
-      <nav className="shrink-0 border-t border-neutral-800 bg-neutral-950">
+      <nav className="shrink-0 border-t border-neutral-800 bg-neutral-950 pb-[env(Safe-area-inset-bottom)]">
         <div className="flex">
           {tabs.map(({ to, label, Icon }) => (
             <NavLink
