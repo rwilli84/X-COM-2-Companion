@@ -3,7 +3,8 @@ import { Modal } from '../ui/Modal'
 import { Button } from '../ui/Button'
 import { Input, Textarea, Select } from '../ui/Input'
 import { useCampaignStore } from '../../store/campaignStore'
-import type { Soldier, SoldierClass, SoldierStatus, SoldierRank, WeaponTier, ArmorTier, ClassDefinition, DlcConfig } from '../../data/types'
+import type { Soldier, SoldierClass, SoldierStatus, SoldierRank, WeaponTier, ArmorTier, ClassDefinition, DlcConfig, CombatIntelligence } from '../../data/types'
+import { COMBAT_INTEL } from '../../data/types'
 
 interface Props {
   soldier: Soldier
@@ -145,6 +146,7 @@ export function SoldierModal({ soldier: init, isNew, classes, dlc, onClose }: Pr
         epitaph: s.epitaph,
         psiAbilities: s.psiAbilities,
         trainingCenterAbility: s.trainingCenterAbility,
+        combatIntelligence: s.combatIntelligence,
       })
     } else {
       await updateSoldier(s.id, s)
@@ -344,13 +346,27 @@ export function SoldierModal({ soldier: init, isNew, classes, dlc, onClose }: Pr
         {dlc.wotc && (
           <>
             <SectionHeading>Training Center</SectionHeading>
-            <div>
-              <label className="field-label">Bonus Ability (from Training Center)</label>
-              <Input
-                value={s.trainingCenterAbility ?? ''}
-                onChange={e => set({ trainingCenterAbility: e.target.value || undefined })}
-                placeholder="e.g. Volatile Mix, Shadowstep..."
-              />
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="field-label">Combat Intelligence</label>
+                <Select
+                  value={s.combatIntelligence ?? ''}
+                  onChange={e => set({ combatIntelligence: (e.target.value || undefined) as CombatIntelligence | undefined })}
+                >
+                  <option value="">— Unknown —</option>
+                  {(Object.keys(COMBAT_INTEL) as CombatIntelligence[]).map(k => (
+                    <option key={k} value={k}>{COMBAT_INTEL[k].label} · {COMBAT_INTEL[k].apPerPromotion} AP/promo</option>
+                  ))}
+                </Select>
+              </div>
+              <div>
+                <label className="field-label">Bonus Ability (Training Center)</label>
+                <Input
+                  value={s.trainingCenterAbility ?? ''}
+                  onChange={e => set({ trainingCenterAbility: e.target.value || undefined })}
+                  placeholder="e.g. Volatile Mix, Shadowstep..."
+                />
+              </div>
             </div>
           </>
         )}
