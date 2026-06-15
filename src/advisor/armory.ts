@@ -11,7 +11,8 @@ export interface ArmoryItem {
   missionTags: CapabilityTag[]
   preferredClasses?: string[]
   blackMarketValue: number  // approximate sell price in supplies
-  pgCost?: { supplies: number; alloys: number; crystals: number; cores: number }
+  pgCost?: { supplies: number; alloys: number; crystals: number; cores: number }  // build cost
+  instant?: boolean   // instant Engineering build (supplies only, no wait)
   notes: string
   wotcOnly?: boolean
 }
@@ -31,6 +32,8 @@ export const ARMORY_CATALOG: ArmoryItem[] = [
     missionTags: ['sustain'],
     preferredClasses: ['specialist'],
     blackMarketValue: 10,
+    instant: true,
+    pgCost: { supplies: 25, alloys: 0, crystals: 0, cores: 0 },
     notes: '+20 defense for all allies in cloud. Strong on extraction and escort missions.',
   },
   {
@@ -39,6 +42,8 @@ export const ARMORY_CATALOG: ArmoryItem[] = [
     missionTags: ['sustain'],
     preferredClasses: ['specialist'],
     blackMarketValue: 10,
+    instant: true,
+    pgCost: { supplies: 35, alloys: 0, crystals: 0, cores: 0 },
     notes: 'Heals 4 HP (8 with Field Medic). Always bring at least one per squad.',
   },
 
@@ -70,10 +75,11 @@ export const ARMORY_CATALOG: ArmoryItem[] = [
   },
   {
     id: 'flashbang',         name: 'Flashbang Grenade',
-    slot: 'grenade',         category: 'pg',
+    slot: 'grenade',         category: 'standard',
     missionTags: ['crowdControl'],
     blackMarketValue: 22,
-    pgCost: { supplies: 50, alloys: 5, crystals: 0, cores: 0 },
+    instant: true,
+    pgCost: { supplies: 35, alloys: 0, crystals: 0, cores: 0 },
     notes: 'Disorients multiple enemies (−30 aim, may Shaken). Cheap reliable crowd control.',
   },
   {
