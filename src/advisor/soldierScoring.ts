@@ -95,13 +95,15 @@ export function scoreSoldier(
   // ── Class innate aptitude fallback ───────────────────────────────────────
   // Only applies if the soldier has NO abilities logged (truly blank slate)
   if (abilities.length === 0) {
-    const innate = CLASS_INNATE[soldier.soldierClass]
+    const innate = soldier.soldierClass ? CLASS_INNATE[soldier.soldierClass] : null
     let innateTotal = 0
-    for (const [tag, val] of Object.entries(innate)) {
-      const needWeight = (profile.needs[tag as CapabilityTag] ?? 0)
-      if (needWeight === 0) continue
-      const delta = C.classAptitudeBase * needWeight * (val ?? 0)
-      innateTotal += delta
+    if (innate) {
+      for (const [tag, val] of Object.entries(innate)) {
+        const needWeight = (profile.needs[tag as CapabilityTag] ?? 0)
+        if (needWeight === 0) continue
+        const delta = C.classAptitudeBase * needWeight * (val ?? 0)
+        innateTotal += delta
+      }
     }
     if (innateTotal > 0) {
       score += innateTotal
