@@ -8,6 +8,7 @@ import { SoldierModal } from '../components/soldiers/SoldierModal'
 import { SkillTreeModal } from '../components/soldiers/SkillTreeModal'
 import { BondsManager } from '../components/soldiers/BondsManager'
 import type { Soldier, SoldierStatus, SoldierClass } from '../data/types'
+import { COMBAT_INTEL } from '../data/types'
 
 const statusColors: Record<SoldierStatus, 'green' | 'amber' | 'gray' | 'red' | 'purple' | 'blue'> = {
   ready: 'green',
@@ -149,6 +150,9 @@ export function Roster() {
                   )}
                   {bondmateName(soldier.id) && (
                     <span className="text-xs font-mono text-purple-400">✦ {bondmateName(soldier.id)}</span>
+                  )}
+                  {soldier.combatIntelligence && (
+                    <span className="text-xs font-mono text-blue-400">🧠 {COMBAT_INTEL[soldier.combatIntelligence].label}</span>
                   )}
                 </div>
               </div>
