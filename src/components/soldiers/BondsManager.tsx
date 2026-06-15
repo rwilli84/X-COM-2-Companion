@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useCampaignStore } from '../../store/campaignStore'
+import { BOND_ABILITIES } from '../../data/bondAbilities'
 import { Button } from '../ui/Button'
 import { Select } from '../ui/Input'
 import { Card, CardBody } from '../ui/Card'
@@ -15,6 +16,7 @@ export function BondsManager() {
   const [s1, setS1] = useState('')
   const [s2, setS2] = useState('')
   const [error, setError] = useState('')
+  const [expandedAbilities, setExpandedAbilities] = useState<Record<string, boolean>>({})
 
   // Living soldiers are eligible for new bonds
   const eligible = soldiers.filter(s => s.status !== 'dead')
@@ -95,6 +97,43 @@ export function BondsManager() {
                     </Select>
                   </div>
                 </div>
+
+                <button
+                  onClick={() => setExpandedAbilities(p => ({ ...p, [bond.id]: !p[bond.id] }))}
+                  className="w-full flex items-center justify-between pt-1 text-[11px] font-mono uppercase tracking-wider text-neutral-500 hover:text-purple-400"
+                >
+                  <span>Bond abilities</span>
+                  <span>{expandedAbilities[bond.id] ? '▲' : '▼'}</span>
+                </button>
+
+                {expandedAbilities[bond.id] && (
+                  <div className="space-y-1.5">
+                    {BOND_ABILITIES.map(ab => {
+                      const unlocked = ab.level <= bond.level
+                      return (
+                        <div
+                          key={ab.id}
+                          className={`px-2.5 py-2 border rounded-sm ${
+                            unlocked
+                              ? 'border-purple-800/60 bg-purple-950/20'
+                              : 'border-neutral-800 bg-transparent opacity-50'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2">
+                            <span className={`text-xs font-mono font-bold ${unlocked ? 'text-purple-300' : 'text-neutral-500'}`}>
+                              {ab.name}
+                            </span>
+                            <span className="text-[9px] font-mono uppercase tracking-wide text-neutral-600">
+                              Lv {ab.level}{ab.passive ? ' · passive' : ''}
+                            </span>
+                            {!unlocked && <span className="text-[9px] font-mono text-neutral-600 ml-auto">🔒 locked</span>}
+                          </div>
+                          <p className="text-[11px] font-mono text-neutral-500 leading-snug mt-0.5">{ab.description}</p>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
               </CardBody>
             </Card>
           ))}
