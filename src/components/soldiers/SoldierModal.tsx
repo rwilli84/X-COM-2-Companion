@@ -191,13 +191,24 @@ export function SoldierModal({ soldier: init, isNew, classes, dlc, onClose }: Pr
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="field-label">Class</label>
-            <Select value={s.soldierClass} onChange={e => set({ soldierClass: e.target.value as SoldierClass, plannedAbilities: [], takenAbilities: [] })}>
-              {classes.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-            </Select>
+            {s.rank === 'rookie' ? (
+              <Select value="" disabled>
+                <option value="">Assigned at Squaddie</option>
+              </Select>
+            ) : (
+              <Select value={s.soldierClass ?? ''} onChange={e => set({ soldierClass: (e.target.value || null) as SoldierClass | null, plannedAbilities: [], takenAbilities: [] })}>
+                <option value="">— Select class —</option>
+                {classes.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+              </Select>
+            )}
           </div>
           <div>
             <label className="field-label">Rank</label>
-            <Select value={s.rank} onChange={e => set({ rank: e.target.value as SoldierRank })}>
+            <Select value={s.rank} onChange={e => {
+              const newRank = e.target.value as SoldierRank
+              if (newRank === 'rookie') set({ rank: newRank, soldierClass: null, plannedAbilities: [], takenAbilities: [] })
+              else set({ rank: newRank })
+            }}>
               {RANKS.map(r => <option key={r} value={r}>{r}</option>)}
             </Select>
           </div>
