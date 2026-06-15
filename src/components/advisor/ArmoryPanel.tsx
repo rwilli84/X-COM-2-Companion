@@ -92,8 +92,11 @@ export function ArmoryPanel() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1.5 flex-wrap">
                         <span className="font-mono text-sm text-neutral-100 font-semibold">{item.name}</span>
-                        {item.pgCost && (
+                        {item.category === 'pg' && (
                           <span className="text-[10px] font-mono text-neutral-600">PG</span>
+                        )}
+                        {item.instant && (
+                          <span className="text-[10px] font-mono text-green-600">⚡ instant</span>
                         )}
                         {item.wotcOnly && (
                           <Badge variant="gray">WotC</Badge>
@@ -102,9 +105,11 @@ export function ArmoryPanel() {
                       <p className="text-[10px] font-mono text-neutral-500 mt-0.5 leading-snug">{item.notes}</p>
                       {item.pgCost && (
                         <p className="text-[10px] font-mono text-neutral-600 mt-0.5">
-                          Build cost: {item.pgCost.supplies}$ · {item.pgCost.alloys}alloy
-                          {item.pgCost.crystals > 0 ? ` · ${item.pgCost.crystals}crystal` : ''}
-                          {item.pgCost.cores > 0 ? ` · ${item.pgCost.cores}core` : ''}
+                          Build cost: {item.pgCost.supplies}$
+                          {item.pgCost.alloys > 0 ? ` · ${item.pgCost.alloys} alloy` : ''}
+                          {item.pgCost.crystals > 0 ? ` · ${item.pgCost.crystals} elerium` : ''}
+                          {item.pgCost.cores > 0 ? ` · ${item.pgCost.cores} core` : ''}
+                          {' '}({item.instant ? 'Engineering · instant' : 'Proving Ground'})
                           {' '}→ Market: ~{item.blackMarketValue}$
                         </p>
                       )}
