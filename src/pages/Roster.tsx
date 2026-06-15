@@ -6,6 +6,7 @@ import { Badge } from '../components/ui/Badge'
 import { Card, CardBody } from '../components/ui/Card'
 import { SoldierModal } from '../components/soldiers/SoldierModal'
 import { SkillTreeModal } from '../components/soldiers/SkillTreeModal'
+import { BondsManager } from '../components/soldiers/BondsManager'
 import type { Soldier, SoldierStatus, SoldierClass } from '../data/types'
 
 const statusColors: Record<SoldierStatus, 'green' | 'amber' | 'gray' | 'red' | 'purple' | 'blue'> = {
@@ -41,10 +42,20 @@ function rankShort(r: string) {
 type FilterStatus = 'all' | 'active' | 'dead'
 
 export function Roster() {
-  const { campaignSoldiers, createSoldier, activeCampaign } = useCampaignStore()
+  const { campaignSoldiers, createSoldier, activeCampaign, campaignBonds } = useCampaignStore()
   const { classes, dlc } = useGameData()
   const campaign = activeCampaign()
   const soldiers = campaignSoldiers()
+  const bonds = campaignBonds()
+
+  // Map a soldier id -> their bonded partner's name (if any)
+  const bondmateName = (soldierId: string): string | null => {
+    const bond = bonds.find(b => b.soldier1Id === soldierId || b.soldier2Id === soldierId)
+    if (!bond) return null
+    const partnerId = bond.soldier1Id === soldierId ? bond.soldier2Id : bond.soldier1Id
+    const partner = soldiers.find(s => s.id === partnerId)
+    return partner ? (partner.nickname || 'Unnamed') : null
+  }
 
   const [filter, setFilter] = useState<FilterStatus>('active')
   const [editingSoldier, setEditingSoldier] = useState<Soldier | null>(null)
@@ -62,7 +73,7 @@ export function Roster() {
       id: '',
       campaignId: campaign?.id ?? '',
       nickname: '',
-      soldierClass: 'ranger',
+      soldierClass: null,
       rank: 'rookie',
       status: 'ready',
       plannedAbilities: [],
@@ -128,11 +139,16 @@ export function Roster() {
                 <div className="flex items-center gap-2 mt-1 flex-wrap">
                   <span className="text-xs font-mono text-amber-600 font-bold">{rankShort(soldier.rank)}</span>
                   <span className="text-xs font-mono text-neutral-500">
-                    {classes.find(c => c.id === soldier.soldierClass)?.name ?? soldier.soldierClass}
+                    {soldier.soldierClass
+                      ? (classes.find(c => c.id === soldier.soldierClass)?.name ?? soldier.soldierClass)
+                      : 'No Class'}
                   </span>
                   <span className="text-xs font-mono text-neutral-600">{soldier.weaponTier} / {soldier.armorTier}</span>
                   {soldier.killCount > 0 && (
                     <span className="text-xs font-mono text-red-400">💀 {soldier.killCount}</span>
+                  )}
+                  {bondmateName(soldier.id) && (
+                    <span className="text-xs font-mono text-purple-400">✦ {bondmateName(soldier.id)}</span>
                   )}
                 </div>
               </div>
@@ -154,6 +170,8 @@ export function Roster() {
           </Card>
         ))}
       </div>
+
+      <BondsManager />
 
       {editingSoldier && (
         <SoldierModal
