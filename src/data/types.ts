@@ -47,7 +47,7 @@ export interface Soldier {
   nickname: string
   firstName?: string
   lastName?: string
-  soldierClass: SoldierClass
+  soldierClass: SoldierClass | null   // null until promoted to Squaddie
   rank: SoldierRank
   status: SoldierStatus
   woundDaysRemaining?: number
