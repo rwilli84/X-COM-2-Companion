@@ -1,203 +1,268 @@
-import type { Campaign, Soldier, Mission, DlcConfig, Difficulty, BondPair } from '../data/types'
+// ─── DLC & Source ───────────────────────────────────────────────────────────
 
-// ─── Capability tags ─────────────────────────────────────────────────────────
+export type DlcSource = 'base' | 'wotc' | 'alien_hunters' | 'shens_last_gift' | 'tlp'
 
-export type CapabilityTag =
-  | 'aoe'           // area-of-effect damage / cover destruction
-  | 'crowdControl'  // stun, disorient, panic, stasis, suppress, mind control
-  | 'armorShred'    // flat armor reduction
-  | 'mobility'      // extra movement, dash-and-act, free moves
-  | 'hacking'       // Gremlin, Haywire, terminal interaction
-  | 'sustain'       // healing, damage mitigation, self-repair
-  | 'burst'         // high single-target damage spike
-  | 'melee'         // sword/blade/psi-blade attacks
-  | 'actionEconomy' // free actions, bonus actions, interrupt turns
-  | 'ammoEfficiency'// headshot chaining (Lost), multi-hit with limited ammo
-  | 'concealment'   // stealth, shadow, phantom
-  | 'psionics'      // psi damage/control (counters Psi-vulnerable enemies)
+export interface DlcConfig {
+  wotc: boolean
+  alienHunters: boolean
+  shensLastGift: boolean
+  tacticalLegacyPack: boolean
+}
 
-// ─── Mission types ────────────────────────────────────────────────────────────
+export const DEFAULT_DLC: DlcConfig = {
+  wotc: false,
+  alienHunters: false,
+  shensLastGift: false,
+  tacticalLegacyPack: false,
+}
 
-export type MissionType =
-  | 'guerrilla_op_timed'
-  | 'guerrilla_op_standard'
-  | 'supply_raid'
-  | 'retaliation'
-  | 'council_vip_extract'
-  | 'council_vip_capture'
-  | 'facility_assault'
-  | 'avenger_defense'
-  | 'network_tower'
-  | 'chosen_stronghold'
-  | 'alien_ruler_encounter'
-  | 'lost_abandoned'
-  | 'lost_mission'
-  | 'final_mission'
-  | 'blacksite'
-  | 'forge'
-  | 'psi_gate'
+// ─── Difficulty ──────────────────────────────────────────────────────────────
 
-export interface MissionProfile {
-  id: MissionType
+export type Difficulty = 'rookie' | 'veteran' | 'commander' | 'legend'
+
+// ─── Soldier ─────────────────────────────────────────────────────────────────
+
+export type SoldierClass =
+  | 'ranger' | 'sharpshooter' | 'grenadier' | 'specialist' | 'psi_operative'
+  | 'spark'           // shens_last_gift
+  | 'reaper' | 'skirmisher' | 'templar'  // wotc
+
+export type SoldierStatus = 'ready' | 'wounded' | 'tired' | 'shaken' | 'dead' | 'captured' | 'missing'
+
+export type SoldierRank =
+  | 'rookie' | 'squaddie' | 'corporal' | 'sergeant' | 'lieutenant' | 'captain' | 'major' | 'colonel'
+
+// WotC: determines how many Ability Points a soldier earns per promotion.
+export type CombatIntelligence = 'standard' | 'above_average' | 'gifted' | 'genius' | 'savant'
+
+export const COMBAT_INTEL: Record<CombatIntelligence, { label: string; apPerPromotion: number }> = {
+  standard:      { label: 'Standard',      apPerPromotion: 3 },
+  above_average: { label: 'Above Average', apPerPromotion: 4 },
+  gifted:        { label: 'Gifted',        apPerPromotion: 5 },
+  genius:        { label: 'Genius',        apPerPromotion: 7 },
+  savant:        { label: 'Savant',        apPerPromotion: 10 },
+}
+
+export interface BondPair {
+  id: string
+  campaignId: string
+  soldier1Id: string
+  soldier2Id: string
+  level: 1 | 2 | 3
+  cohesion: number
+}
+
+export interface Soldier {
+  id: string
+  campaignId: string
+  nickname: string
+  firstName?: string
+  lastName?: string
+  soldierClass: SoldierClass | null   // null until promoted to Squaddie
+  rank: SoldierRank
+  status: SoldierStatus
+  woundDaysRemaining?: number
+  plannedAbilities: string[]   // ability ids the user has planned
+  takenAbilities: string[]     // ability ids confirmed taken in-game
+  weaponTier: WeaponTier
+  armorTier: ArmorTier
+  // Structured loadout slots
+  grenadeSlot?: string
+  utilitySlots?: [string?, string?, string?]
+  ammoType?: string
+  pcsChip?: string
+  /** @deprecated use structured loadout fields */
+  loadoutNotes: string
+  killCount: number
+  missionCount: number
+  epitaph?: string
+  psiAbilities?: string[]      // psi op training slots
+  trainingCenterAbility?: string  // WotC random ability
+  combatIntelligence?: CombatIntelligence  // WotC; AP earned per promotion
+  createdAt: number
+  updatedAt: number
+}
+
+export type WeaponTier = 'conventional' | 'magnetic' | 'beam'
+export type ArmorTier = 'none' | 'kevlar' | 'predator' | 'warden' | 'powered' | 'spider' | 'wraith' | 'hunter' | 'alien_rulers'
+
+// ─── Ability / Skill Tree ────────────────────────────────────────────────────
+
+export interface Ability {
+  id: string
   name: string
   description: string
-  source: 'base' | 'wotc' | 'alien_hunters'
-  needs: Partial<Record<CapabilityTag, number>> // weight 1–3
-  requiredRoles?: Array<'specialist' | 'grenadier' | 'psi_operative' | 'reaper'>
-  hardCounters?: string[]  // ability ids or items that hard-counter a threat
-  generalWarnings?: string[]
-  minSquadSize?: number
+  source: DlcSource
+  passive?: boolean
+  approx?: boolean
 }
 
-// ─── Scoring output ───────────────────────────────────────────────────────────
-
-export interface ScoreBreakdown {
-  label: string
-  delta: number
-  tag?: CapabilityTag
+export interface SkillTreeRank {
+  rank: SoldierRank
+  choices: Ability[]   // usually 2, sometimes 1 or 3
+  freeAbility?: Ability  // WotC XCOM-row / AP
 }
 
-export interface SoldierScore {
-  soldier: Soldier
-  score: number
-  excluded: boolean
-  exclusionReason?: string
-  breakdowns: ScoreBreakdown[]
-  warnings: string[]
+export interface ClassDefinition {
+  id: SoldierClass
+  name: string
+  description: string
+  source: DlcSource
+  ranks: SkillTreeRank[]
+  squaddieFreeAbility?: Ability   // first ability all get on promotion
 }
 
-export interface SquadRecommendation {
-  soldiers: SoldierScore[]
-  squadWarnings: string[]
-  missingRoles: string[]
-  bondPairs: Array<{ s1: string; s2: string; note: string }>
-  profileName: string
-  dataQuality: 'full' | 'partial' | 'minimal'
-  missingDataHints: string[]
+// ─── Enemies ─────────────────────────────────────────────────────────────────
+
+export interface DifficultyStats {
+  hp: number
+  armor?: number
+  mobility: number
+  will?: number
+  approx?: boolean
 }
 
-// ─── Mission selection ────────────────────────────────────────────────────────
-
-export type RewardType =
-  | 'supplies' | 'intel' | 'alloys' | 'cores' | 'engineers' | 'scientists'
-  | 'contacts' | 'avatar_reduction' | 'dark_event_counter' | 'soldier_rescue'
-  | 'chosen_knowledge' | 'resistance_ring' | 'xp' | 'unknown'
-
-export interface MissionOption {
-  id: string
-  label: string
-  missionType: MissionType
-  primaryReward: RewardType
-  secondaryReward?: RewardType
-  countersActiveDarkEvent: boolean
-  daysRemaining?: number
-  chosenTerritory?: boolean
-  difficulty?: 'low' | 'medium' | 'high'
+export interface EnemyAbility {
+  name: string
+  description: string
+  approx?: boolean
 }
 
-export interface MissionOptionScore {
-  option: MissionOption
-  score: number
-  rank: number
-  reasons: string[]
-  warnings: string[]
-}
-
-export type DoomPressure = 'low' | 'medium' | 'high' | 'critical'
-
-// ─── Research recommendation ──────────────────────────────────────────────────
-
-export interface ResearchRecommendation {
-  researchId: string
-  researchName: string
-  score: number
-  reasons: string[]
-  estimatedDays: number
-  opportunityCost: string
-  urgency: 'low' | 'medium' | 'high' | 'critical'
-}
-
-// ─── Base advisor ─────────────────────────────────────────────────────────────
-
-export interface BaseRecommendation {
-  facilityId: string
-  facilityName: string
-  score: number
-  reasons: string[]
-  suggestedCell?: { col: number; row: number }
-  urgency: 'low' | 'medium' | 'high' | 'critical'
-}
-
-export interface StaffingRecommendation {
-  role: 'engineer' | 'scientist'
-  bestFacility: string
-  reason: string
-}
-
-export interface BasePlan {
-  nextBuilds: BaseRecommendation[]
-  warnings: string[]
-  staffing: StaffingRecommendation[]
-  powerMargin: number
-  contactsRemaining: number
-}
-
-// ─── Economy advisor ──────────────────────────────────────────────────────────
-
-export interface InventorySnapshot {
-  supplies: number
-  alloys: number
-  crystals: number   // elerium crystals
-  cores: number      // elerium cores (very scarce)
-  intel: number
-  contacts: number   // active resistance contacts
-  provingGroundsActive: boolean  // is a PG project already running?
-  plannedArmorTier?: 'predator' | 'warden' | 'powered' | 'spider' | 'wraith'
-  plannedWeaponTier?: 'magnetic' | 'beam'
-}
-
-export interface SellRecommendation {
-  item: string
-  currentStock: number
-  safeToSell: number
-  keepAmount: number
-  reason: string
-  risk: 'safe' | 'caution' | 'hold'
-}
-
-export interface ProvingGroundsProject {
+export interface Enemy {
   id: string
   name: string
-  supplyCost: number
-  alloyCost: number
-  crystalCost: number
-  coreCost: number
-  usefulness: number   // 1–10
-  usefulnessNote: string
-  category: 'grenade' | 'ammo' | 'utility' | 'weapon' | 'armor'
+  description: string
+  source: DlcSource
+  replacedByWotc?: boolean
+  faction: string
+  difficultyStats: Record<Difficulty, DifficultyStats>
+  abilities: EnemyAbility[]
+  counterTip: string
+  isRuler?: boolean
+  rulerReactionNote?: string
+  approx?: boolean
 }
 
-export interface EconomyPlan {
-  sellRecommendations: SellRecommendation[]
-  provingGroundsQueue: Array<ProvingGroundsProject & { affordable: boolean; reason: string }>
-  supplyProjection: {
-    weeklyIncome: number
-    projectedIn4Weeks: number
-    projectedIn8Weeks: number
-    weeksToAffordNextFacility: number | null
-    nextFacilityCost: number | null
-    nextFacilityName: string | null
-  }
-  warnings: string[]
-  tips: string[]
+// ─── Research ────────────────────────────────────────────────────────────────
+
+export interface ResearchProject {
+  id: string
+  name: string
+  description: string
+  source: DlcSource
+  prerequisites: string[]   // research ids
+  days: Record<Difficulty, number>
+  unlocks: string[]         // descriptions of what this unlocks
+  replacedByWotc?: boolean
+  approx?: boolean
 }
 
-// ─── Snapshot passed to all advisor functions ─────────────────────────────────
+// ─── Dark Events ──────────────────────────────────────────────────────────────
 
-export interface CampaignSnapshot {
-  campaign: Campaign
-  soldiers: Soldier[]
-  missions: Mission[]
-  bonds: BondPair[]
-  doomPressure: DoomPressure
+export interface DarkEvent {
+  id: string
+  name: string
+  description: string
+  effect: string
+  source: DlcSource
+  duration: string
+  approx?: boolean
+}
+
+// ─── Avenger Facilities ───────────────────────────────────────────────────────
+
+export interface Facility {
+  id: string
+  name: string
+  description: string
+  source: DlcSource
+  powerCost: number
+  buildDays: number
+  buildCost: string
+  effects: string[]
+  replacedByWotc?: boolean
+  approx?: boolean
+}
+
+// ─── Campaign ─────────────────────────────────────────────────────────────────
+
+export interface AvatarLog {
+  date: string
+  change: number
+  reason: string
+}
+
+export interface ActiveDarkEvent {
+  id: string
+  eventId: string
+  startedAt: string
+  expiresAt?: string
+  completed: boolean
+}
+
+export interface KnowledgeLogEntry {
+  timestamp: number
+  event: string
+}
+
+export interface ChosenData {
+  id: string
+  campaignId: string
+  chosenType: 'assassin' | 'hunter' | 'warlock'
+  strengths: string[]
+  weaknesses: string[]
+  knowledgeTier: 0 | 1 | 2 | 3
+  knowledgeLog: KnowledgeLogEntry[]
+  strongholdRegion?: string
+  strongholdAssaulted: boolean
+  strongholdCompleted: boolean
+  killedByHero?: 'reaper' | 'skirmisher' | 'templar'
+  sacrificeUsed: boolean
+  capturedSoldierIds: string[]
+  eliminated: boolean
+}
+
+export interface Mission {
+  id: string
+  campaignId: string
+  type: string
+  date: string
+  outcome: 'success' | 'failure' | 'partial'
+  deployedSoldierIds: string[]
+  kiaIds: string[]
+  woundedIds: string[]
+  notes: string
+}
+
+export interface FacilityPlacement {
+  col: number   // 0-3
+  row: number   // 0-2
+  facilityId: string
+}
+
+export interface CovertAction {
+  id: string
+  campaignId: string
+  name: string
+  date: string
+  outcome: string
+  notes: string
+}
+
+export interface Campaign {
+  id: string
+  name: string
+  difficulty: Difficulty
+  dlc: DlcConfig
+  avatarPips: number
+  avatarLog: AvatarLog[]
+  activeDarkEvents: ActiveDarkEvent[]
+  facilityPlacements: FacilityPlacement[]
+  chosenData: ChosenData[]
+  covertActions: CovertAction[]
+  completedResearch: string[]
+  pinnedResearchPaths: string[]
+  armory?: Record<string, number>  // itemId -> quantity in stock
+  createdAt: number
+  updatedAt: number
 }
